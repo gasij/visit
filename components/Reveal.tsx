@@ -5,13 +5,16 @@ interface RevealProps {
   children: React.ReactNode;
   width?: "fit-content" | "100%";
   delay?: number;
+  /** Above-the-fold content: start visible so it's never transparent */
+  defaultVisible?: boolean;
 }
 
-const Reveal: React.FC<RevealProps> = ({ children, width = "fit-content", delay = 0 }) => {
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef(null);
+const Reveal: React.FC<RevealProps> = ({ children, width = "fit-content", delay = 0, defaultVisible = false }) => {
+  const [isVisible, setIsVisible] = useState(defaultVisible);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (defaultVisible) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -24,7 +27,7 @@ const Reveal: React.FC<RevealProps> = ({ children, width = "fit-content", delay 
 
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, []);
+  }, [defaultVisible]);
 
   return (
     <div 

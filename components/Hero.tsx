@@ -1,25 +1,67 @@
-
 import React from 'react';
 import { Github, Linkedin, Send, Facebook, Instagram, ArrowRight } from 'lucide-react';
 import Reveal from './Reveal';
+import TextPressure from './TextPressure';
 
 const Hero: React.FC = () => {
   return (
     <section className="pt-48 pb-20 px-8 max-w-7xl mx-auto">
       <div className="relative">
-        <Reveal>
-          <h1 className="text-7xl md:text-[10rem] font-black leading-[0.85] tracking-tighter mb-12">
-            Full-stack<br />
-            <span className="flex items-center gap-8">
-              разработчик
-              <div className="hidden md:flex items-center bg-white text-black text-sm px-10 py-4 rounded-full font-bold hover:bg-zinc-200 transition-all gap-2 transform translate-y-4 cursor-pointer">
+        <Reveal defaultVisible>
+          <div className="mb-12 flex flex-col gap-3">
+            <div style={{ position: 'relative', height: 'clamp(180px, 28vw, 380px)' }} className="w-full">
+              <TextPressure
+                text="Bloom-code"
+                flex
+                alpha={false}
+                stroke={false}
+                width
+                weight
+                italic
+                textColor="#ffffff"
+                strokeColor="#5227FF"
+                minFontSize={56}
+              />
+            </div>
+            <div className="flex items-center gap-8">
+              <div style={{ position: 'relative', height: 'clamp(180px, 28vw, 380px)', flex: '1 1 auto', minWidth: 0 }} className="flex items-end gap-6 md:gap-10">
+                <TextPressure
+                  text="Студия"
+                  fontFamily="Inter"
+                  fontUrl="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2"
+                  flex
+                  alpha={false}
+                  stroke={false}
+                  width={false}
+                  weight
+                  italic={false}
+                  textColor="#ffffff"
+                  strokeColor="#5227FF"
+                  minFontSize={56}
+                />
+                <TextPressure
+                  text="веб-разработки"
+                  fontFamily="Inter"
+                  fontUrl="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa0ZL7W0Q5n-wU.woff2"
+                  flex
+                  alpha={false}
+                  stroke={false}
+                  width={false}
+                  weight
+                  italic={false}
+                  textColor="#ffffff"
+                  strokeColor="#5227FF"
+                  minFontSize={56}
+                />
+              </div>
+              <div className="hidden md:flex items-center bg-white text-black text-sm px-10 py-4 rounded-full font-bold hover:bg-zinc-200 transition-all gap-2 transform translate-y-4 cursor-pointer shrink-0">
                 Проекты
                 <div className="bg-black text-white rounded-full p-1 ml-4">
                   <ArrowRight size={16} />
                 </div>
               </div>
-            </span>
-          </h1>
+            </div>
+          </div>
         </Reveal>
       </div>
 
