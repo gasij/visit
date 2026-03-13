@@ -89,10 +89,24 @@
   .card-grid {
     grid-template-columns: 1fr;
     width: 100%;
-    padding: 0.5em;
+    max-width: 100%;
+    padding: 0.4em;
+    font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+    box-sizing: border-box;
   }
   .magic-bento-card {
-    min-height: 180px;
+    aspect-ratio: auto;
+    min-height: 168px;
+    padding: 1em;
+    border-radius: 16px;
+  }
+  .magic-bento-card__title {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+  .magic-bento-card__description {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
   }
 }
 

@@ -55,9 +55,9 @@ const ArticleList: React.FC = () => {
   const currentArticles = ALL_ARTICLES.slice(startIndex, startIndex + itemsPerPage);
 
   return (
-    <section id="articles" className="py-32 px-8 max-w-7xl mx-auto">
-      <div className="flex justify-end mb-20 overflow-hidden">
-        <h2 className="text-6xl md:text-9xl font-black opacity-100 tracking-tighter transform md:translate-x-12 animate-[fadeIn_0.8s_ease-out]">
+    <section id="articles" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full min-w-0 overflow-x-hidden">
+      <div className="flex justify-start sm:justify-end mb-10 sm:mb-16 md:mb-20 overflow-hidden">
+        <h2 className="text-4xl sm:text-6xl md:text-9xl font-black opacity-100 tracking-tighter md:translate-x-12 animate-[fadeIn_0.8s_ease-out] leading-none">
           Статьи
         </h2>
       </div>
@@ -87,23 +87,41 @@ const ArticleList: React.FC = () => {
           </button>
         </div>
 
+        {/* Mobile pagination */}
+        <div className="flex lg:hidden flex-wrap items-center justify-center gap-2 mb-8 col-span-full">
+          {[...Array(totalPages)].map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => handlePageChange(i + 1)}
+              className={`min-w-[40px] h-10 px-3 rounded-full flex items-center justify-center font-bold text-sm transition-all border ${
+                currentPage === i + 1
+                  ? 'bg-white text-black border-white'
+                  : 'border-zinc-800 text-zinc-500 hover:border-zinc-500'
+              }`}
+            >
+              {i + 1}
+            </button>
+          ))}
+        </div>
+
         {/* Article Grid with Sliding Animation Container */}
-        <div className={`grid md:grid-cols-2 gap-8 md:col-span-2 transition-all duration-500 ease-in-out transform ${
+        <div className={`grid md:grid-cols-2 gap-4 sm:gap-8 md:col-span-2 transition-all duration-500 ease-in-out transform w-full min-w-0 ${
           isAnimating ? 'opacity-0 translate-y-8 blur-sm' : 'opacity-100 translate-y-0 blur-0'
         }`}>
           {currentArticles.map((article) => (
             <div 
               key={article.id} 
-              className="bg-zinc-900/50 border border-zinc-800 p-8 md:p-12 rounded-[3.5rem] hover:bg-zinc-800/80 transition-all group hover:scale-[1.02] cursor-pointer"
+              className="bg-zinc-900/50 border border-zinc-800 p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-[3.5rem] hover:bg-zinc-800/80 transition-all group sm:hover:scale-[1.02] cursor-pointer min-w-0"
             >
-              <h4 className="text-2xl md:text-3xl font-bold font-mono mb-6 leading-tight group-hover:text-white transition-colors">
+              <h4 className="text-lg sm:text-2xl md:text-3xl font-bold font-mono mb-4 sm:mb-6 leading-tight group-hover:text-white transition-colors">
                 {article.title}
               </h4>
-              <p className="text-zinc-500 text-sm leading-relaxed mb-10 max-w-sm h-12 overflow-hidden">
+              <p className="text-zinc-500 text-xs sm:text-sm leading-relaxed mb-6 sm:mb-10 max-w-sm min-h-[3rem] sm:h-12 overflow-hidden line-clamp-3 sm:line-clamp-2">
                 {article.description}
               </p>
-              <div className="flex items-center gap-4">
-                <button className="bg-white text-black px-8 py-3 rounded-full text-sm font-bold flex items-center gap-2 hover:bg-zinc-200 transition-all group-active:scale-95">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                <button type="button" className="bg-white text-black px-5 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold flex items-center gap-2 hover:bg-zinc-200 transition-all group-active:scale-95">
                   Читать далее
                 </button>
                 <div className="w-12 h-12 rounded-full border border-zinc-700 flex items-center justify-center group-hover:border-white group-hover:bg-white/10 transition-all">
