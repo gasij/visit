@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import FeaturedArticles from './components/FeaturedArticles';
+import MagicBento from './components/MagicBento';
 import About from './components/About';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
@@ -48,7 +48,24 @@ const App: React.FC = () => {
           <Header />
           <main className="w-full min-w-0 overflow-x-hidden">
             <Hero />
-            <FeaturedArticles />
+            <section className="py-16 md:py-24 px-4 md:px-8 max-w-7xl mx-auto w-full">
+              <div className="text-center mb-8 md:mb-10">
+                <span className="font-mono text-zinc-500 text-sm">... / команда ...</span>
+              </div>
+              <MagicBento
+                textAutoHide
+                enableStars
+                enableSpotlight
+                enableBorderGlow
+                enableTilt={false}
+                enableMagnetism={false}
+                clickEffect
+                spotlightRadius={400}
+                particleCount={12}
+                glowColor="132, 0, 255"
+                disableAnimations={false}
+              />
+            </section>
             <About />
             <Experience />
             <Projects />
