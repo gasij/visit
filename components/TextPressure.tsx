@@ -142,11 +142,14 @@ const TextPressure: React.FC<TextPressureProps> = ({
 
   useEffect(() => {
     let rafId: number;
+    let frame = 0;
     const animate = () => {
+      frame += 1;
       mouseRef.current.x += (cursorRef.current.x - mouseRef.current.x) / 15;
       mouseRef.current.y += (cursorRef.current.y - mouseRef.current.y) / 15;
 
-      if (titleRef.current) {
+      /* ~20 fps вместо 60 — меньше layout при getBoundingClientRect */
+      if (frame % 3 === 0 && titleRef.current) {
         const titleRect = titleRef.current.getBoundingClientRect();
         const maxDist = titleRect.width / 2;
 

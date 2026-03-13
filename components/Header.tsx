@@ -3,6 +3,7 @@ import { Menu, X } from 'lucide-react';
 import bloomLogo from '../bloomcode_transparent.png';
 
 const navLinks = [
+  { href: '#leaders', label: 'Команда' },
   { href: '#about', label: 'О себе' },
   { href: '#projects', label: 'Проекты' },
   { href: '#articles', label: 'Статьи' },

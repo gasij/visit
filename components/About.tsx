@@ -69,7 +69,7 @@ const About: React.FC = () => {
             <div className="relative aspect-square max-w-[280px] sm:max-w-md mx-auto w-full">
                <div className="absolute inset-0 rounded-full border border-zinc-800 group-hover:border-zinc-500 transition-colors"></div>
                <img 
-                 src="https://picsum.photos/seed/ivan/600/600" 
+                 src="/ivan-avatar.png" 
                  alt="Иван Жучков" 
                  className="w-[85%] h-[85%] object-cover rounded-3xl sm:rounded-[4rem] grayscale absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 shadow-2xl rotate-2 group-hover:rotate-0 transition-transform duration-700"
                />
