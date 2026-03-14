@@ -58,10 +58,15 @@ const StudioLeaders: React.FC = () => {
         </h2>
       </Reveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 md:gap-8 xl:gap-10 items-start justify-items-center">
+      <div
+        className="grid gap-10 md:gap-8 xl:gap-10 items-start justify-items-stretch w-full"
+        style={{
+          gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))',
+        }}
+      >
         {leaders.map((L, i) => (
           <Reveal key={L.handle} delay={0.05 + i * 0.05} width="100%" defaultVisible>
-            <div className="w-full max-w-[340px] mx-auto flex justify-center min-h-[420px]">
+            <div className="w-full flex justify-center min-h-[420px] py-1 box-border">
               <ProfileCard
                 compact
                 name={L.name}

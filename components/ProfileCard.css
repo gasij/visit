@@ -34,20 +34,38 @@
   perspective: 500px;
   transform: translate3d(0, 0, 0.1px);
   position: relative;
-  touch-action: none;
+  touch-action: manipulation;
   width: 100%;
-  display: flex;
-  justify-content: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/*
+ * Компакт: явная ширина в px — иначе на мобилке у обёртки нет in-flow ширины
+ * (дети absolute), grid даёт minmax(auto)→0 → «полоска».
+ */
+.pc-card-wrapper--compact {
+  width: min(100%, 360px);
+  max-width: 100%;
+}
+
+.pc-card-shell {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: block;
 }
 
 /* Явная высота: иначе только absolute-дети → высота 0 → карточка невидима */
 .pc-card-wrapper--compact .pc-card {
   width: 100%;
-  max-width: 320px;
+  max-width: none;
   height: min(72svh, 460px);
   min-height: 400px;
   max-height: 480px;
-  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .pc-behind {
@@ -97,10 +115,6 @@
   transition: transform 180ms ease-out;
 }
 
-.pc-card-shell {
-  position: relative;
-  z-index: 1;
-}
 
 .pc-card * {
   display: grid;
@@ -473,6 +487,10 @@
 }
 
 @media (max-width: 768px) {
+  .pc-card-wrapper--compact {
+    width: calc(100vw - 2rem);
+    max-width: 360px;
+  }
   .pc-card-wrapper--compact .pc-card {
     min-height: 360px;
     height: min(68svh, 440px);

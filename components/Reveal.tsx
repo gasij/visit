@@ -33,7 +33,13 @@ const Reveal: React.FC<RevealProps> = ({ children, width = "fit-content", delay 
     <div 
       ref={ref} 
       // Merged width, position, overflow, and transitionDelay into a single style object
-      style={{ width, position: 'relative', overflow: 'hidden', transitionDelay: `${delay}s` }}
+      style={{
+        width,
+        maxWidth: '100%',
+        position: 'relative',
+        overflow: 'hidden',
+        transitionDelay: `${delay}s`,
+      }}
       className={`transition-all duration-1000 ease-out transform ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
       }`}
