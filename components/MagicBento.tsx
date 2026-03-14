@@ -8,12 +8,48 @@ const DEFAULT_GLOW_COLOR = '132, 0, 255';
 const MOBILE_BREAKPOINT = 768;
 
 const cardData = [
-  { color: '#060010', label: 'Мы', title: 'Команда', description: 'Мы — команда веб-разработчиков: от идеи до продакшена.' },
-  { color: '#060010', label: 'Веб', title: 'Разработка', description: 'Сайты, SPA, API и интеграции под задачи бизнеса.' },
-  { color: '#060010', label: 'Вместе', title: 'Совместно', description: 'Работаем с заказчиком прозрачно, по итерациям.' },
-  { color: '#060010', label: 'Код', title: 'Качество', description: 'Поддерживаемый код, ревью и единые стандарты.' },
-  { color: '#060010', label: 'Стек', title: 'Технологии', description: 'React, Vue, TypeScript, Node, Python — стек, который надёжно масштабируется.' },
-  { color: '#060010', label: 'Поддержка', title: 'Надёжность', description: 'Релизы, сопровождение и развитие после запуска.' },
+  {
+    color: '#060010',
+    label: 'Мы',
+    title: 'Команда',
+    description:
+      'Bloom-studio: от идеи и MVP до продакшена. Один контакт по проекту, сроки и объём работ прозрачны.',
+  },
+  {
+    color: '#060010',
+    label: 'Веб',
+    title: 'Разработка',
+    description:
+      'Сайты, SPA, кабинеты, API. Интеграции CRM, 1С, оплаты — задача бизнеса важнее «магии стека».',
+  },
+  {
+    color: '#060010',
+    label: 'Вместе',
+    title: 'Совместно',
+    description:
+      'Итерации с демо и бэклогом. Подходит ТЗ и продуктовый формат — обратная связь без потерь.',
+  },
+  {
+    color: '#060010',
+    label: 'Код',
+    title: 'Качество',
+    description:
+      'Review, договорённости по архитектуре, тесты где окупается. Код, который живёт годами.',
+  },
+  {
+    color: '#060010',
+    label: 'Стек',
+    title: 'Технологии',
+    description:
+      'React, Next.js, Vue, .NET, Node, Directus, PostgreSQL, Docker, PHP, 1С — единый контур от UI до данных.',
+  },
+  {
+    color: '#060010',
+    label: 'Поддержка',
+    title: 'Надёжность',
+    description:
+      'Релизы, бэкапы, безопасность. После запуска — сопровождение и новые фичи, не «сдали и исчезли».',
+  },
 ];
 
 const createParticleElement = (x: number, y: number, color: string) => {

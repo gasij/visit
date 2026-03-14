@@ -5,17 +5,42 @@ const stackGroups = [
   {
     title: 'Frontend',
     subtitle: 'Интерфейсы и SPA',
-    items: ['React', 'Vue', 'TypeScript', 'JavaScript', 'HTML / CSS', 'Vite', 'Webpack'],
+    items: [
+      'React',
+      'Next.js',
+      'Vue',
+      'TypeScript',
+      'JavaScript',
+      'HTML / CSS',
+      'Vite',
+    ],
   },
   {
     title: 'Backend & API',
     subtitle: 'Сервисы и данные',
-    items: ['Node.js', 'Python', 'REST', 'GraphQL'],
+    items: [
+      'Node.js',
+      '.NET',
+      'Python',
+      'PHP',
+      'REST',
+      'GraphQL',
+    ],
+  },
+  {
+    title: 'Данные, CMS, интеграции',
+    subtitle: 'Хранилища и учёт',
+    items: [
+      'PostgreSQL',
+      'Directus',
+      'Docker',
+      '1С — обмен',
+    ],
   },
   {
     title: 'Инфра и качество',
     subtitle: 'Сборка, деплой, процесс',
-    items: ['Git', 'CI/CD', 'Docker', 'Тестирование', 'Code review'],
+    items: ['Git', 'CI/CD', 'Тестирование', 'Code review'],
   },
 ];
 
@@ -26,8 +51,9 @@ const Experience: React.FC = () => {
         <h2 className="text-4xl sm:text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none">
           Стек
         </h2>
-        <p className="text-zinc-500 max-w-md md:text-right font-mono text-xs sm:text-sm leading-relaxed">
-          Технологии, на которых строим продукты: от прототипа до продакшена — единый стиль кода и масштабирование.
+        <p className="text-zinc-500 max-w-lg md:text-right font-mono text-xs sm:text-sm leading-relaxed">
+          Технологии, на которых строим продукты: от прототипа до продакшена. Один стиль кода, предсказуемое
+          масштабирование и аккуратные мосты к CRM, 1С и вашему текущему контуру.
         </p>
       </div>
 
@@ -57,8 +83,8 @@ const Experience: React.FC = () => {
 
       <div className="mt-8 sm:mt-12 text-left sm:text-right flex flex-col sm:block gap-1">
         <span className="text-zinc-500 uppercase tracking-widest text-[10px] sm:text-xs sm:mr-4">Bloom-studio</span>
-        <span className="italic text-lg sm:text-2xl font-bold text-white break-words">
-          React · Vue · JS · Python
+        <span className="italic text-base sm:text-xl md:text-2xl font-bold text-white break-words">
+          React · Next.js · .NET · Node · Directus · PostgreSQL · 1С
         </span>
       </div>
     </section>

@@ -9,18 +9,19 @@ const Footer: React.FC = () => {
         <div className="absolute top-0 left-[-10%] w-[120%] h-[120%] border border-zinc-800 rounded-full -z-10"></div>
         <div className="grid md:grid-cols-2 gap-12 items-end">
           <div className="space-y-4">
-            <h2 className="text-[11vw] sm:text-[10vw] md:text-[8rem] font-black leading-[0.9] sm:leading-[0.85] tracking-tighter break-words">
-              Иван<br />Жучков
+            <h2 className="text-[9vw] sm:text-[8vw] md:text-[6.5rem] font-black leading-[0.88] sm:leading-[0.82] tracking-tighter break-words">
+              Bloom-<br />studio
             </h2>
-            <div className="text-zinc-500 uppercase tracking-widest text-xs font-mono ml-4">
-              Full-stack разработчик
+            <div className="text-zinc-500 uppercase tracking-widest text-xs font-mono ml-1 sm:ml-4">
+              Студия веб-разработки
             </div>
           </div>
           
           <div className="space-y-12 md:pl-20">
              <div className="text-zinc-500 font-mono">... /Контакты ...</div>
-             <nav className="flex flex-wrap gap-x-12 gap-y-6 text-sm uppercase tracking-widest">
-                <a href="#main" className="hover:text-white transition-colors">Главная</a>
+             <nav className="flex flex-wrap gap-x-8 sm:gap-x-12 gap-y-6 text-sm uppercase tracking-widest">
+                <a href="#" className="hover:text-white transition-colors">Главная</a>
+                <a href="#leaders" className="hover:text-white transition-colors">Команда</a>
                 <a href="#about" className="hover:text-white transition-colors">О себе</a>
                 <a href="#projects" className="hover:text-white transition-colors">Проекты</a>
                 <a href="#articles" className="hover:text-white transition-colors">Статьи</a>

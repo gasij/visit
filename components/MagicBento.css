@@ -71,18 +71,25 @@
 }
 
 .magic-bento-card__description {
-  font-size: clamp(0.8rem, 0.75rem + 0.25vw, 0.95rem);
-  line-height: 1.35;
-  opacity: 0.88;
+  font-size: clamp(0.78rem, 0.72rem + 0.22vw, 0.92rem);
+  line-height: 1.42;
+  opacity: 0.9;
 }
 
-.magic-bento-card--text-autohide .magic-bento-card__title,
+.magic-bento-card--text-autohide .magic-bento-card__title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
 .magic-bento-card--text-autohide .magic-bento-card__description {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
 }
 
 @media (max-width: 599px) {
@@ -96,7 +103,7 @@
   }
   .magic-bento-card {
     aspect-ratio: auto;
-    min-height: 168px;
+    min-height: 200px;
     padding: 1em;
     border-radius: 16px;
   }
@@ -104,9 +111,9 @@
     -webkit-line-clamp: 2;
     line-clamp: 2;
   }
-  .magic-bento-card__description {
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+  .magic-bento-card--text-autohide .magic-bento-card__description {
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
   }
 }
 
@@ -116,21 +123,16 @@
   }
 }
 
+/* Ровная сетка 3×2 — без огромных пустых блоков */
 @media (min-width: 1024px) {
   .card-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 60em;
   }
-  .magic-bento-card:nth-child(3) {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
-  .magic-bento-card:nth-child(4) {
-    grid-column: 1 / span 2;
-    grid-row: 2 / span 2;
-  }
-  .magic-bento-card:nth-child(6) {
-    grid-column: 4;
-    grid-row: 3;
+  .magic-bento-card {
+    aspect-ratio: 5 / 4;
+    min-height: 0;
+    min-height: 200px;
   }
 }
 
