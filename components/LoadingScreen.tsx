@@ -28,7 +28,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFinished }) => {
     <div className={`fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center transition-transform duration-1000 ease-[cubic-bezier(0.85,0,0.15,1)] ${exit ? '-translate-y-full' : 'translate-y-0'}`}>
       <div className="relative overflow-hidden mb-8">
         <h1 className="text-4xl md:text-6xl font-black tracking-tighter uppercase animate-pulse">
-          sopranos studio
+          BLOOM STUDIO
         </h1>
       </div>
       
@@ -44,7 +44,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFinished }) => {
       </div>
       
       <div className="absolute bottom-12 text-[10px] uppercase tracking-[0.4em] text-zinc-700">
-        Установка соединения с портфолио
+        Установка соединения 
       </div>
     </div>
   );

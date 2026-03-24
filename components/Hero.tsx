@@ -14,8 +14,8 @@ const Hero: React.FC = () => {
     return () => m.removeEventListener('change', q);
   }, []);
 
-  const minMain = narrow ? 30 : 56;
-  const minSub = narrow ? 22 : 56;
+  const minMain = narrow ? 56 : 90;
+  const minSub = narrow ? 40 : 70;
   const hMain = narrow ? 'clamp(88px, 26vw, 380px)' : 'clamp(180px, 28vw, 380px)';
   const hSub = narrow ? 'clamp(72px, 20vw, 380px)' : 'clamp(180px, 28vw, 380px)';
 
@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
           <div className="mb-8 sm:mb-12 flex flex-col gap-2 sm:gap-3 min-w-0">
             <div style={{ position: 'relative', height: hMain }} className="w-full min-w-0">
               <TextPressure
-                text="Bloom-studio"
+                text="BLOOM-STUDIO"
                 flex
                 alpha={false}
                 stroke={false}
@@ -99,18 +99,14 @@ const Hero: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-end mt-12 md:mt-24">
         <Reveal delay={0.2}>
           <p className="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-md">
-            Моя цель — <span className="italic text-white">писать поддерживаемый, чистый</span> и{' '}
-            <span className="italic text-white">понятный код</span>, чтобы процесс разработки был приятным.
+            Наша цель — <span className="italic text-white">создавать сложные</span> и{' '}
+            <span className="italic text-white">поддерживаемые </span>, проекты и системы. 
           </p>
         </Reveal>
 
         <Reveal delay={0.4}>
           <div className="flex flex-wrap gap-2 sm:gap-3 md:justify-end">
-            <SocialButton icon={<Github size={18} />} label="Github" />
-            <SocialButton icon={<Linkedin size={18} />} label="LinkedIn" />
-            <SocialButton icon={<Send size={18} />} label="Telegram" />
-            <SocialButton icon={<Facebook size={18} />} label="Facebook" />
-            <SocialButton icon={<Instagram size={18} />} label="Instagram" />
+            
           </div>
         </Reveal>
       </div>

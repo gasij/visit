@@ -49,7 +49,7 @@ const StudioLeaders: React.FC = () => {
     >
       <Reveal>
         <div className="text-center mb-4">
-          <span className="font-mono text-zinc-500 text-sm">... / лиды студии ...</span>
+          <span className="font-mono text-zinc-500 text-sm">... / команда ...</span>
         </div>
       </Reveal>
       <Reveal delay={0.08}>
