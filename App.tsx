@@ -40,7 +40,7 @@ const App: React.FC = () => {
             />
           ) : (
             <LiquidEther
-              colors={['#5227FF', '#FF9FFC', '#B19EEF']}
+              colors={['#5227FF', '#f607ee', '#B19EEF']}
               mouseForce={16}
               cursorSize={90}
               isViscous

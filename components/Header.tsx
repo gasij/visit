@@ -4,7 +4,7 @@ import bloomLogo from '../bloomcode_transparent.png';
 
 const navLinks = [
   { href: '#leaders', label: 'Команда' },
-  { href: '#about', label: 'О себе' },
+  { href: '#magicbento', label: 'Способности' },
   { href: '#projects', label: 'Проекты' },
   { href: '#articles', label: 'Статьи' },
   { href: '#contacts', label: 'Контакты' },
