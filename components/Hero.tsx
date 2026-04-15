@@ -14,17 +14,18 @@ const Hero: React.FC = () => {
     return () => m.removeEventListener('change', q);
   }, []);
 
-  const minMain = narrow ? 56 : 90;
-  const minSub = narrow ? 40 : 70;
-  const hMain = narrow ? 'clamp(88px, 26vw, 380px)' : 'clamp(180px, 28vw, 380px)';
-  const hSub = narrow ? 'clamp(72px, 20vw, 380px)' : 'clamp(180px, 28vw, 380px)';
+  const minMain = narrow ? 68 : 96;
+  /** Одна база для «Студия» и «веб-разработки» — один размер букв */
+  const minSubtitle = narrow ? 42 : 64;
+  const hMain = narrow ? 'clamp(96px, 28vw, 380px)' : 'clamp(180px, 28vw, 380px)';
+  const hSub = narrow ? 'clamp(100px, 28vw, 320px)' : 'clamp(168px, 26vw, 380px)';
 
   return (
     <section className="pt-24 pb-12 px-4 sm:pt-32 sm:pb-16 sm:px-6 md:pt-48 md:pb-20 md:px-8 max-w-7xl mx-auto w-full min-w-0">
       <div className="relative min-w-0">
         <Reveal defaultVisible>
-          <div className="mb-8 sm:mb-12 flex flex-col gap-2 sm:gap-3 min-w-0">
-            <div style={{ position: 'relative', height: hMain }} className="w-full min-w-0">
+          <div className="mb-8 sm:mb-12 flex flex-col gap-1 sm:gap-2 min-w-0">
+            <div style={{ position: 'relative', height: hMain }} className="w-full min-w-0 overflow-visible">
               <TextPressure
                 text="BLOOM-STUDIO"
                 flex
@@ -36,11 +37,16 @@ const Hero: React.FC = () => {
                 textColor="#ffffff"
                 strokeColor="#5227FF"
                 minFontSize={minMain}
+                verticalAlign="center"
               />
             </div>
-            <div className="flex flex-col sm:flex-row sm:items-end gap-4 sm:gap-8 min-w-0 w-full">
-              <div className="flex flex-col sm:flex-row sm:items-end gap-2 sm:gap-6 md:gap-10 w-full min-w-0 flex-1">
-                <div className="relative w-full sm:flex-1 min-w-0" style={{ height: hSub }}>
+            {/* Подзаголовки отдельно на всю ширину — не делим ряд с кнопкой, без наезда */}
+            <div className="flex flex-col gap-6 sm:gap-7 md:gap-8 w-full min-w-0">
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 md:gap-8 lg:gap-14 w-full min-w-0">
+                <div
+                  className="relative w-full md:w-[42%] md:max-w-xl min-w-0 overflow-visible"
+                  style={{ height: hSub }}
+                >
                   <TextPressure
                     text="Студия"
                     fontFamily="Inter"
@@ -53,10 +59,14 @@ const Hero: React.FC = () => {
                     italic={false}
                     textColor="#ffffff"
                     strokeColor="#5227FF"
-                    minFontSize={minSub}
+                    minFontSize={minSubtitle}
+                    verticalAlign="center"
                   />
                 </div>
-                <div className="relative w-full sm:flex-[1.35] min-w-0" style={{ height: narrow ? 'clamp(64px, 18vw, 200px)' : hSub }}>
+                <div
+                  className="relative w-full md:flex-1 md:min-w-0 overflow-visible"
+                  style={{ height: hSub }}
+                >
                   <TextPressure
                     text="веб-разработки"
                     fontFamily="Inter"
@@ -69,19 +79,23 @@ const Hero: React.FC = () => {
                     italic={false}
                     textColor="#ffffff"
                     strokeColor="#5227FF"
-                    minFontSize={narrow ? 16 : minSub}
+                    minFontSize={minSubtitle}
+                    verticalAlign="center"
                   />
                 </div>
               </div>
-              <a
-                href="#projects"
-                className="hidden sm:inline-flex items-center bg-white text-black text-sm px-6 md:px-10 py-3 md:py-4 rounded-full font-bold hover:bg-zinc-200 transition-all gap-2 sm:translate-y-0 md:translate-y-4 cursor-pointer shrink-0 self-start sm:self-end"
-              >
-                Проекты
-                <span className="bg-black text-white rounded-full p-1 ml-2 md:ml-4 inline-flex">
-                  <ArrowRight size={16} />
-                </span>
-              </a>
+              {/* Кнопка отдельной строкой справа — как раньше по положению */}
+              <div className="hidden sm:flex justify-end w-full pt-0 md:pt-1">
+                <a
+                  href="#projects"
+                  className="inline-flex items-center bg-white text-black text-sm px-6 md:px-10 py-3 md:py-4 rounded-full font-bold hover:bg-zinc-200 transition-all gap-2 sm:translate-y-0 md:translate-y-4"
+                >
+                  Проекты
+                  <span className="bg-black text-white rounded-full p-1 ml-2 md:ml-4 inline-flex">
+                    <ArrowRight size={16} />
+                  </span>
+                </a>
+              </div>
             </div>
             <a
               href="#projects"

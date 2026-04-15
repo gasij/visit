@@ -10,7 +10,7 @@ import Projects from './components/Projects';
 import ArticleList from './components/ArticleList';
 import Footer from './components/Footer';
 import LoadingScreen from './components/LoadingScreen';
-import LiquidEther from './components/LiquidEther';
+import ColorBends from './components/ColorBends';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,22 +39,19 @@ const App: React.FC = () => {
               }}
             />
           ) : (
-            <LiquidEther
-              colors={['#5227FF', '#f607ee', '#B19EEF']}
-              mouseForce={16}
-              cursorSize={90}
-              isViscous
-              viscous={28}
-              iterationsViscous={10}
-              iterationsPoisson={10}
-              resolution={0.28}
-              isBounce={false}
-              autoDemo
-              autoSpeed={0.35}
-              autoIntensity={1.6}
-              takeoverDuration={0.25}
-              autoResumeDelay={4000}
-              autoRampDuration={0.6}
+            <ColorBends
+              className="absolute inset-0 h-full w-full"
+              colors={['#e85a78', '#7a62e8', '#35d4c4']}
+              rotation={0}
+              speed={0.2}
+              scale={1}
+              frequency={1}
+              warpStrength={0.92}
+              mouseInfluence={0.9}
+              parallax={0.5}
+              noise={0.1}
+              transparent
+              autoRotate={0}
             />
           )}
         </div>

@@ -1,7 +1,7 @@
 // Component ported from https://codepen.io/JuanFuentes/full/rgXKGQ
 // Font used - https://compressa.preusstype.com/
 
-import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
+import { useEffect, useRef, useState, useMemo, useCallback, type FC } from 'react';
 
 const dist = (a: { x: number; y: number }, b: { x: number; y: number }) => {
   const dx = b.x - a.x;
@@ -37,9 +37,18 @@ interface TextPressureProps {
   strokeColor?: string;
   className?: string;
   minFontSize?: number;
+  /** hidden обрезает глифы при variable font; visible — для длинных строк в узком блоке */
+  overflow?: 'hidden' | 'visible';
+  /** Вертикаль внутри контейнера + точка масштаба (важно для двух строк в ряд) */
+  verticalAlign?: 'start' | 'center' | 'end';
+  /** Одинаковые буквы: без анимации wght/wdth от курсора */
+  uniformGlyphs?: boolean;
+  fixedWght?: number;
+  /** Центр + gap вместо space-between — визуально ровнее */
+  evenLetterGap?: boolean;
 }
 
-const TextPressure: React.FC<TextPressureProps> = ({
+const TextPressure: FC<TextPressureProps> = ({
   text = 'Compressa',
   fontFamily = 'Compressa VF',
   fontUrl = 'https://res.cloudinary.com/dr6lvwubh/raw/upload/v1529908256/CompressaPRO-GX.woff2',
@@ -54,6 +63,11 @@ const TextPressure: React.FC<TextPressureProps> = ({
   strokeColor = '#FF0000',
   className = '',
   minFontSize = 24,
+  overflow = 'visible',
+  verticalAlign = 'center',
+  uniformGlyphs = false,
+  fixedWght = 700,
+  evenLetterGap = false,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -106,8 +120,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
     // Делаем буквы меньше, контейнер не меняем (0.75 = 75% от растянутого размера)
     newFontSize = newFontSize * 0.75;
     newFontSize = Math.max(newFontSize, minFontSize);
-    // Cap by container height so the line doesn't overflow and overlap the next row
-    const maxFontByHeight = containerH * 0.85;
+    const maxFontByHeight = containerH * 0.88;
     newFontSize = Math.min(newFontSize, maxFontByHeight);
 
     setFontSize(newFontSize);
@@ -120,7 +133,6 @@ const TextPressure: React.FC<TextPressureProps> = ({
       const textRect = titleRef.current.getBoundingClientRect();
       const containerRect = containerRef.current.getBoundingClientRect();
 
-      // Fit width: scale down if text overflows
       if (textRect.width > containerRect.width && containerRect.width > 0) {
         setScaleX(containerRect.width / textRect.width);
       }
@@ -141,6 +153,8 @@ const TextPressure: React.FC<TextPressureProps> = ({
   }, [setSize]);
 
   useEffect(() => {
+    if (uniformGlyphs) return;
+
     let rafId: number;
     let frame = 0;
     const animate = () => {
@@ -185,7 +199,7 @@ const TextPressure: React.FC<TextPressureProps> = ({
 
     animate();
     return () => cancelAnimationFrame(rafId);
-  }, [width, weight, italic, alpha]);
+  }, [uniformGlyphs, width, weight, italic, alpha]);
 
   const styleElement = useMemo(
     () => (
@@ -199,6 +213,11 @@ const TextPressure: React.FC<TextPressureProps> = ({
         .text-pressure-flex {
           display: flex;
           justify-content: space-between;
+        }
+
+        .text-pressure-flex.text-pressure-flex--gap {
+          justify-content: center;
+          gap: clamp(0.06em, 1.5vw, 0.18em);
         }
 
         .text-pressure-stroke span {
@@ -224,7 +243,26 @@ const TextPressure: React.FC<TextPressureProps> = ({
     [fontFamily, fontUrl, textColor, strokeColor]
   );
 
-  const dynamicClassName = [className, flex ? 'text-pressure-flex' : '', stroke ? 'text-pressure-stroke' : ''].filter(Boolean).join(' ');
+  const dynamicClassName = [
+    className,
+    flex ? 'text-pressure-flex' : '',
+    flex && evenLetterGap ? 'text-pressure-flex--gap' : '',
+    stroke ? 'text-pressure-stroke' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  const uniformVariation: string | undefined = uniformGlyphs ? `'wght' ${fixedWght}` : undefined;
+
+  const justify =
+    verticalAlign === 'start' ? 'flex-start' : verticalAlign === 'end' ? 'flex-end' : 'center';
+
+  const transformOrigin =
+    verticalAlign === 'start'
+      ? 'center top'
+      : verticalAlign === 'end'
+        ? 'center bottom'
+        : 'center center';
 
   return (
     <div
@@ -234,6 +272,10 @@ const TextPressure: React.FC<TextPressureProps> = ({
         width: '100%',
         height: '100%',
         background: 'transparent',
+        overflow,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: justify,
       }}
     >
       {styleElement}
@@ -244,14 +286,14 @@ const TextPressure: React.FC<TextPressureProps> = ({
           fontFamily,
           textTransform: 'uppercase',
           fontSize: fontSize,
-          lineHeight,
+          lineHeight: uniformGlyphs ? 1.05 : lineHeight,
           transform: `scale(${scaleX}, ${scaleY})`,
-          transformOrigin: scaleX < 1 ? 'center center' : 'center top',
+          transformOrigin,
           margin: 0,
           textAlign: 'center',
           userSelect: 'none',
           whiteSpace: 'nowrap',
-          fontWeight: 100,
+          fontWeight: uniformGlyphs ? fixedWght : 100,
           width: '100%',
         }}
       >
@@ -262,7 +304,9 @@ const TextPressure: React.FC<TextPressureProps> = ({
             data-char={char}
             style={{
               display: 'inline-block',
+              flex: evenLetterGap ? '0 0 auto' : undefined,
               color: stroke ? undefined : textColor,
+              fontVariationSettings: uniformVariation,
             }}
           >
             {char}
