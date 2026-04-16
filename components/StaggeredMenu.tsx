@@ -431,12 +431,17 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       }
       aria-label="Навигация"
     >
-      <a href={logoHref} className="sm-logo min-w-0 shrink-0" aria-label="На главную" onClick={() => closeMenu()}>
+      <a
+        href={logoHref}
+        className={`sm-logo min-w-0 shrink-0 ${glassHeader ? 'pl-2 sm:pl-3 md:pl-5' : ''}`}
+        aria-label="На главную"
+        onClick={() => closeMenu()}
+      >
         <img src={logoUrl} alt="" className="sm-logo-img object-contain object-left drop-shadow-sm" draggable={false} width={110} height={24} />
       </a>
       <button
         ref={toggleBtnRef}
-        className="sm-toggle shrink-0"
+        className={`sm-toggle shrink-0 ${glassHeader ? 'mr-2 sm:mr-4 md:mr-6' : ''}`}
         aria-label={open ? closeLabel : openLabel}
         aria-expanded={open}
         aria-controls="staggered-menu-panel"
