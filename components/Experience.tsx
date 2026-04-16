@@ -1,5 +1,10 @@
-
 import React from 'react';
+
+const introPanelClass =
+  'rounded-2xl border border-white/10 bg-zinc-950/25 px-4 py-3 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]';
+
+const TECH_CHIP_CLASS =
+  'font-mono text-[11px] sm:text-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 text-zinc-200 bg-zinc-950/35 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-md transition-all duration-200 hover:border-white/15 hover:bg-zinc-900/45 hover:text-white group-hover:border-white/15 group-hover:bg-zinc-900/45 group-hover:text-white';
 
 const stackGroups = [
   {
@@ -51,10 +56,14 @@ const Experience: React.FC = () => {
         <h2 className="text-4xl sm:text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none">
           Стек
         </h2>
-        <p className="text-zinc-500 max-w-lg md:text-right font-mono text-xs sm:text-sm leading-relaxed">
-          Технологии, на которых строим продукты: от прототипа до продакшена. Один стиль кода, предсказуемое
-          масштабирование и аккуратные мосты к CRM, 1С и вашему текущему контуру.
-        </p>
+        <div className="max-w-lg md:text-right">
+          <div className={`${introPanelClass} md:ml-auto max-w-lg`}>
+            <p className="text-zinc-400 text-base sm:text-lg leading-relaxed text-left">
+              Технологии, на которых строим продукты: от прототипа до продакшена. Один стиль кода, предсказуемое
+              масштабирование и аккуратные мосты к CRM, 1С и вашему текущему контуру.
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="space-y-2">
@@ -69,10 +78,7 @@ const Experience: React.FC = () => {
             </div>
             <div className="md:col-span-8 flex flex-wrap gap-1.5 sm:gap-2 md:justify-end">
               {group.items.map((tag) => (
-                <span
-                  key={tag}
-                  className="font-mono text-[11px] sm:text-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-zinc-800 text-zinc-300 group-hover:border-zinc-600 group-hover:text-white transition-colors"
-                >
+                <span key={tag} className={TECH_CHIP_CLASS}>
                   {tag}
                 </span>
               ))}

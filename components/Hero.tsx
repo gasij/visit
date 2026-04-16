@@ -3,6 +3,9 @@ import { ArrowRight, Github, Linkedin, Send, Facebook, Instagram } from 'lucide-
 import Reveal from './Reveal';
 import TextPressure from './TextPressure';
 
+const heroIntroPanelClass =
+  'rounded-2xl border border-white/10 bg-zinc-950/25 px-4 py-3 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]';
+
 const Hero: React.FC = () => {
   const [narrow, setNarrow] = useState(true);
 
@@ -115,10 +118,11 @@ const Hero: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-end mt-12 md:mt-24">
         <Reveal delay={0.2} width="100%">
-          <p className="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-md">
-            Наша цель — <span className="italic text-white">создавать сложные</span> и{' '}
-            <span className="italic text-white">поддерживаемые</span> проекты и системы.
-          </p>
+          <div className={`max-w-md ${heroIntroPanelClass}`}>
+            <p className="text-zinc-400 text-base sm:text-lg leading-relaxed">
+              Наша цель — создавать сложные и поддерживаемые проекты и системы.
+            </p>
+          </div>
         </Reveal>
 
         <Reveal delay={0.4} width="100%">

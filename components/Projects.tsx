@@ -2,6 +2,9 @@
 import React from 'react';
 import { Github, ArrowUpRight } from 'lucide-react';
 
+const techTagClass =
+  'font-mono text-[11px] sm:text-xs px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 text-zinc-200 bg-zinc-950/35 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-md transition-all duration-200 hover:border-white/15 hover:bg-zinc-900/45 hover:text-white';
+
 const Projects: React.FC = () => {
   return (
     <section id="projects" className="py-12 sm:py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full min-w-0 overflow-x-hidden">
@@ -14,8 +17,10 @@ const Projects: React.FC = () => {
         <div className="order-2 lg:order-1 space-y-5 sm:space-y-8 min-w-0">
           <h3 className="text-2xl sm:text-4xl font-bold">Gostat</h3>
           <div className="flex flex-wrap gap-2">
-            {['Golang', 'TypeScript', 'Gin', 'NextJs', 'PostgreSQL', 'Redis'].map(tag => (
-              <span key={tag} className="px-5 py-2 border border-zinc-800 rounded-full text-xs text-zinc-400">{tag}</span>
+            {['Golang', 'TypeScript', 'Gin', 'NextJs', 'PostgreSQL', 'Redis'].map((tag) => (
+              <span key={tag} className={techTagClass}>
+                {tag}
+              </span>
             ))}
           </div>
           <p className="text-zinc-400 leading-relaxed text-sm sm:text-lg max-w-md">
@@ -59,8 +64,10 @@ const Projects: React.FC = () => {
         <div className="order-2 space-y-5 sm:space-y-8 min-w-0">
           <h3 className="text-2xl sm:text-4xl font-bold">Kana Master</h3>
           <div className="flex flex-wrap gap-2">
-            {['TypeScript', 'ReactNative', 'Redux Toolkit', 'i18n', 'iOS'].map(tag => (
-              <span key={tag} className="px-5 py-2 border border-zinc-800 rounded-full text-xs text-zinc-400">{tag}</span>
+            {['TypeScript', 'ReactNative', 'Redux Toolkit', 'i18n', 'iOS'].map((tag) => (
+              <span key={tag} className={techTagClass}>
+                {tag}
+              </span>
             ))}
           </div>
           <p className="text-zinc-400 leading-relaxed text-sm sm:text-lg max-w-md">
