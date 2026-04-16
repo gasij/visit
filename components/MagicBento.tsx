@@ -320,8 +320,20 @@ export default function MagicBento({
       )}
       <div id="magicbento" className="card-grid bento-section" ref={gridRef}>
         {cardData.map((card, i) => {
-          const cls = `magic-bento-card ${textAutoHide ? 'magic-bento-card--text-autohide' : ''} ${enableBorderGlow ? 'magic-bento-card--border-glow' : ''}`;
-          const st = { backgroundColor: card.color, '--glow-color': glowColor } as React.CSSProperties;
+          const cls = [
+            'magic-bento-card',
+            `magic-bento-card--shape-${i % 6}`,
+            textAutoHide ? 'magic-bento-card--text-autohide' : '',
+            enableBorderGlow ? 'magic-bento-card--border-glow' : '',
+          ]
+            .filter(Boolean)
+            .join(' ');
+          const sheens = ['148deg', '212deg', '328deg', '42deg', '268deg', '188deg'] as const;
+          const st = {
+            backgroundColor: card.color,
+            '--glow-color': glowColor,
+            '--bento-sheen': sheens[i % sheens.length],
+          } as React.CSSProperties;
           return (
             <ParticleCard
               key={i}
