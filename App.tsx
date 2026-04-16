@@ -11,6 +11,7 @@ import ArticleList from './components/ArticleList';
 import Footer from './components/Footer';
 import LoadingScreen from './components/LoadingScreen';
 import ColorBends from './components/ColorBends';
+import AIAssistant from './components/AIAssistant';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -69,7 +70,12 @@ const App: React.FC = () => {
               <div className="text-center mb-8 md:mb-10">
                 <span className="font-mono text-zinc-500 text-sm">.../способности/...</span>
               </div>
-              <MagicBento
+             
+            </section>
+              <Experience />
+            <Projects />
+            <ArticleList />
+            <MagicBento
                 textAutoHide
                 enableStars={false}
                 enableSpotlight={false}
@@ -82,14 +88,14 @@ const App: React.FC = () => {
                 glowColor="132, 0, 255"
                 disableAnimations={false}
               />
-            </section>
             <StudioLeaders />
             
-            <Experience />
-            <Projects />
-            <ArticleList />
+            
+            
+             
           </main>
           <Footer />
+          <AIAssistant />
         </div>
       </div>
     </>

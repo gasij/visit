@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Send, Facebook, Instagram, ArrowRight } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Send, Facebook, Instagram } from 'lucide-react';
 import Reveal from './Reveal';
 import TextPressure from './TextPressure';
 
@@ -14,16 +14,16 @@ const Hero: React.FC = () => {
     return () => m.removeEventListener('change', q);
   }, []);
 
-  const minMain = narrow ? 68 : 96;
+  const minMain = narrow ? 54 : 78;
   /** Одна база для «Студия» и «веб-разработки» — один размер букв */
-  const minSubtitle = narrow ? 42 : 64;
-  const hMain = narrow ? 'clamp(96px, 28vw, 380px)' : 'clamp(180px, 28vw, 380px)';
-  const hSub = narrow ? 'clamp(100px, 28vw, 320px)' : 'clamp(168px, 26vw, 380px)';
+  const minSubtitle = narrow ? 32 : 52;
+  const hMain = narrow ? 'clamp(80px, 24vw, 300px)' : 'clamp(140px, 24vw, 300px)';
+  const hSub = narrow ? 'clamp(82px, 22vw, 260px)' : 'clamp(120px, 22vw, 300px)';
 
   return (
-    <section className="pt-24 pb-12 px-4 sm:pt-32 sm:pb-16 sm:px-6 md:pt-48 md:pb-20 md:px-8 max-w-7xl mx-auto w-full min-w-0">
-      <div className="relative min-w-0">
-        <Reveal defaultVisible>
+    <section className="w-full min-w-0 pt-24 pb-12 px-4 sm:pt-32 sm:pb-16 sm:px-6 md:pt-48 md:pb-20 md:px-8 lg:px-12 xl:px-16">
+      <div className="relative min-w-0 w-full">
+        <Reveal defaultVisible width="100%">
           <div className="mb-8 sm:mb-12 flex flex-col gap-1 sm:gap-2 min-w-0">
             <div style={{ position: 'relative', height: hMain }} className="w-full min-w-0 overflow-visible">
               <TextPressure
@@ -37,6 +37,7 @@ const Hero: React.FC = () => {
                 textColor="#ffffff"
                 strokeColor="#5227FF"
                 minFontSize={minMain}
+                fontScale={0.92}
                 verticalAlign="center"
               />
             </div>
@@ -60,6 +61,7 @@ const Hero: React.FC = () => {
                     textColor="#ffffff"
                     strokeColor="#5227FF"
                     minFontSize={minSubtitle}
+                    fontScale={0.7}
                     verticalAlign="center"
                   />
                 </div>
@@ -80,6 +82,7 @@ const Hero: React.FC = () => {
                     textColor="#ffffff"
                     strokeColor="#5227FF"
                     minFontSize={minSubtitle}
+                    fontScale={0.7}
                     verticalAlign="center"
                   />
                 </div>
@@ -111,16 +114,20 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-end mt-12 md:mt-24">
-        <Reveal delay={0.2}>
+        <Reveal delay={0.2} width="100%">
           <p className="text-zinc-400 text-base sm:text-lg leading-relaxed max-w-md">
             Наша цель — <span className="italic text-white">создавать сложные</span> и{' '}
-            <span className="italic text-white">поддерживаемые </span>, проекты и системы. 
+            <span className="italic text-white">поддерживаемые</span> проекты и системы.
           </p>
         </Reveal>
 
-        <Reveal delay={0.4}>
+        <Reveal delay={0.4} width="100%">
           <div className="flex flex-wrap gap-2 sm:gap-3 md:justify-end">
-            
+            <SocialButton icon={<Github size={18} />} label="Github" />
+            <SocialButton icon={<Linkedin size={18} />} label="LinkedIn" />
+            <SocialButton icon={<Send size={18} />} label="Telegram" />
+            <SocialButton icon={<Facebook size={18} />} label="Facebook" />
+            <SocialButton icon={<Instagram size={18} />} label="Instagram" />
           </div>
         </Reveal>
       </div>

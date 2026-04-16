@@ -46,6 +46,8 @@ interface TextPressureProps {
   fixedWght?: number;
   /** Центр + gap вместо space-between — визуально ровнее */
   evenLetterGap?: boolean;
+  /** Доп. масштаб кегля после расчёта (например 0.9) */
+  fontScale?: number;
 }
 
 const TextPressure: FC<TextPressureProps> = ({
@@ -68,6 +70,7 @@ const TextPressure: FC<TextPressureProps> = ({
   uniformGlyphs = false,
   fixedWght = 700,
   evenLetterGap = false,
+  fontScale = 1,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -122,6 +125,7 @@ const TextPressure: FC<TextPressureProps> = ({
     newFontSize = Math.max(newFontSize, minFontSize);
     const maxFontByHeight = containerH * 0.88;
     newFontSize = Math.min(newFontSize, maxFontByHeight);
+    newFontSize *= fontScale;
 
     setFontSize(newFontSize);
     setScaleY(1);
@@ -143,7 +147,7 @@ const TextPressure: FC<TextPressureProps> = ({
         setLineHeight(yRatio);
       }
     });
-  }, [chars.length, minFontSize, scale]);
+  }, [chars.length, minFontSize, scale, fontScale]);
 
   useEffect(() => {
     const debouncedSetSize = debounce(setSize, 100);
@@ -159,11 +163,11 @@ const TextPressure: FC<TextPressureProps> = ({
     let frame = 0;
     const animate = () => {
       frame += 1;
-      mouseRef.current.x += (cursorRef.current.x - mouseRef.current.x) / 15;
-      mouseRef.current.y += (cursorRef.current.y - mouseRef.current.y) / 15;
+      const follow = 10;
+      mouseRef.current.x += (cursorRef.current.x - mouseRef.current.x) / follow;
+      mouseRef.current.y += (cursorRef.current.y - mouseRef.current.y) / follow;
 
-      /* ~20 fps вместо 60 — меньше layout при getBoundingClientRect */
-      if (frame % 3 === 0 && titleRef.current) {
+      if (frame % 2 === 0 && titleRef.current) {
         const titleRect = titleRef.current.getBoundingClientRect();
         const maxDist = titleRect.width / 2;
 
