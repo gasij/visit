@@ -318,7 +318,7 @@ export default function MagicBento({
       {enableSpotlight && (
         <GlobalSpotlight gridRef={gridRef} enabled={enableSpotlight} disableAnimations={off} spotlightRadius={spotlightRadius} glowColor={glowColor} />
       )}
-      <div className="card-grid bento-section" ref={gridRef}>
+      <div id="magicbento" className="card-grid bento-section" ref={gridRef}>
         {cardData.map((card, i) => {
           const cls = `magic-bento-card ${textAutoHide ? 'magic-bento-card--text-autohide' : ''} ${enableBorderGlow ? 'magic-bento-card--border-glow' : ''}`;
           const st = { backgroundColor: card.color, '--glow-color': glowColor } as React.CSSProperties;
