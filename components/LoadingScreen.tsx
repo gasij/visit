@@ -28,8 +28,8 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFinished }) => {
     <div className={`fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center transition-transform duration-1000 ease-[cubic-bezier(0.85,0,0.15,1)] ${exit ? '-translate-y-full' : 'translate-y-0'}`}>
       <div className="relative mb-10 flex justify-center px-4 sm:px-6">
         <img
-          src="/aperta_logo_minimal_shark.svg"
-          alt="aperta"
+          src="/Mask%20group.svg"
+          alt="webfoundry"
           className="h-[clamp(5.75rem,20vw,16rem)] w-auto max-w-[min(96vw,960px)] animate-pulse"
           width={960}
           height={356}

@@ -92,8 +92,8 @@ const Header: React.FC = () => {
           >
             <a href="#" className="flex items-center shrink-0 z-10 min-w-0 pl-1 sm:pl-2 md:pl-3">
               <img
-                src="/aperta_logo_minimal_shark.svg"
-                alt="aperta"
+                src="/Mask%20group.svg"
+                alt="webfoundry"
                 className="h-12 w-auto md:h-14 lg:h-16"
                 width={672}
                 height={250}

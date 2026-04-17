@@ -506,7 +506,7 @@ type ASCIITextProps = {
 };
 
 export default function ASCIIText({
-  text = 'aperta',
+  text = 'webfoundry',
   asciiFontSize = 8,
   textFontSize = 200,
   textColor = '#fdf9f3',

@@ -5,12 +5,12 @@ import { Github, Linkedin, Send, Facebook, Instagram, Mail } from 'lucide-react'
 const Footer: React.FC = () => {
   return (
     <footer id="contacts" className="py-10 sm:py-14 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto overflow-hidden w-full min-w-0">
-      <div className="relative mb-10 sm:mb-16 md:mb-20">
-        <div className="absolute top-0 left-[-10%] w-[120%] h-[120%] border border-zinc-800 rounded-full -z-10"></div>
-        <div className="grid md:grid-cols-2 gap-8 items-end">
-          <div className="space-y-4">
-            <h2 className="text-[9vw] sm:text-[8vw] md:text-[6.5rem] font-black leading-[0.88] sm:leading-[0.82] tracking-tighter break-words">
-              aperta
+      <div className="mb-10 sm:mb-16 md:mb-20">
+        <div className="h-px w-full bg-zinc-800" aria-hidden />
+        <div className="grid md:grid-cols-2 gap-8 items-end py-8 sm:py-10">
+          <div className="min-w-0 space-y-4">
+            <h2 className="max-w-full text-[clamp(1.75rem,7.2vw,6.5rem)] sm:text-[8vw] md:text-[6.5rem] font-black leading-[0.88] sm:leading-[0.82] tracking-tighter break-words">
+              webfoundry
             </h2>
             <div className="text-zinc-500 uppercase tracking-widest text-xs font-mono ml-1 sm:ml-4">
               Студия веб-разработки
@@ -27,6 +27,7 @@ const Footer: React.FC = () => {
              </nav>
           </div>
         </div>
+        <div className="h-px w-full bg-zinc-800" aria-hidden />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">

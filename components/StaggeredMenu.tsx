@@ -436,8 +436,8 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         onClick={() => closeMenu()}
       >
         <img
-          src="/aperta_logo_minimal_shark.svg"
-          alt="aperta"
+          src="/Mask%20group.svg"
+          alt="webfoundry"
           className="sm-logo-img block h-12 w-auto sm:h-14"
           width={392}
           height={146}
@@ -503,7 +503,7 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
               >
                 {i === 2 ? (
                   <img
-                    src="/aperta_logo_minimal_shark.svg"
+                    src="/Mask%20group.svg"
                     alt=""
                     className="sm-prelayer-logo"
                     width={336}

@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
           <div className="mb-6 sm:mb-8 flex flex-col gap-1 sm:gap-2 min-w-0">
             <div style={{ position: 'relative', height: hMain }} className="w-full min-w-0 overflow-visible">
               <TextPressure
-                text="aperta"
+                text="webfoundry"
                 flex
                 alpha={false}
                 stroke={false}
