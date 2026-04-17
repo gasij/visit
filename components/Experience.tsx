@@ -51,8 +51,8 @@ const stackGroups = [
 
 const Experience: React.FC = () => {
   return (
-    <section className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full min-w-0">
-      <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-4 sm:gap-6 mb-12 sm:mb-16 md:mb-20">
+    <section className="py-10 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full min-w-0">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-4 sm:gap-5 mb-8 sm:mb-10 md:mb-12">
         <h2 className="text-4xl sm:text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none">
           Стек
         </h2>
@@ -87,7 +87,7 @@ const Experience: React.FC = () => {
         ))}
       </div>
 
-      <div className="mt-8 sm:mt-12 text-left sm:text-right flex flex-col sm:block gap-1">
+      <div className="mt-6 sm:mt-8 text-left sm:text-right flex flex-col sm:block gap-1">
         <span className="text-zinc-500 tracking-widest text-[10px] sm:text-xs sm:mr-4">aperta</span>
         <span className="italic text-base sm:text-xl md:text-2xl font-bold text-white break-words">
           React · Next.js · .NET · Node · Directus · PostgreSQL · 1С

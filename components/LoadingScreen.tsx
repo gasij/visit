@@ -26,10 +26,15 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFinished }) => {
 
   return (
     <div className={`fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center transition-transform duration-1000 ease-[cubic-bezier(0.85,0,0.15,1)] ${exit ? '-translate-y-full' : 'translate-y-0'}`}>
-      <div className="relative overflow-hidden mb-8">
-        <h1 className="text-4xl md:text-6xl font-black tracking-tighter animate-pulse">
-          aperta
-        </h1>
+      <div className="relative mb-10 flex justify-center px-4 sm:px-6">
+        <img
+          src="/aperta_logo_minimal_shark.svg"
+          alt="aperta"
+          className="h-[clamp(5.75rem,20vw,16rem)] w-auto max-w-[min(96vw,960px)] animate-pulse"
+          width={960}
+          height={356}
+          decoding="async"
+        />
       </div>
       
       <div className="w-64 h-[1px] bg-zinc-800 relative overflow-hidden">

@@ -424,7 +424,7 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     <header
       className={
         glassHeader
-          ? 'staggered-menu-header staggered-menu-header--in-glass pointer-events-auto mx-auto max-w-7xl flex min-h-[56px] min-w-0 items-center justify-between gap-2 sm:min-h-[56px] md:min-h-[60px] rounded-2xl border border-white/[0.12] bg-zinc-950/45 px-3 py-2 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl backdrop-saturate-150 sm:px-4 sm:py-2 md:rounded-[1.35rem] md:px-6 md:py-2.5'
+          ? 'staggered-menu-header staggered-menu-header--in-glass pointer-events-auto mx-auto max-w-7xl flex min-h-[64px] min-w-0 items-center justify-between gap-2 sm:min-h-[64px] md:min-h-[72px] rounded-2xl border border-white/[0.12] bg-zinc-950/45 px-3 py-2 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl backdrop-saturate-150 sm:px-4 sm:py-2 md:rounded-[1.35rem] md:px-6 md:py-2.5'
           : 'staggered-menu-header'
       }
       aria-label="Навигация"
@@ -435,7 +435,14 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         aria-label="На главную"
         onClick={() => closeMenu()}
       >
-        <span className="sm-logo-wordmark">aperta</span>
+        <img
+          src="/aperta_logo_minimal_shark.svg"
+          alt="aperta"
+          className="sm-logo-img block h-12 w-auto sm:h-14"
+          width={392}
+          height={146}
+          decoding="async"
+        />
       </a>
       <button
         ref={toggleBtnRef}
@@ -488,7 +495,24 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
               const mid = Math.floor(arr.length / 2);
               arr.splice(mid, 1);
             }
-            return arr.map((c, i) => <div key={i} className="sm-prelayer" style={{ background: c }} />);
+            return arr.map((c, i) => (
+              <div
+                key={i}
+                className={`sm-prelayer${i === 2 ? ' sm-prelayer--with-logo' : ''}`}
+                style={{ background: c }}
+              >
+                {i === 2 ? (
+                  <img
+                    src="/aperta_logo_minimal_shark.svg"
+                    alt=""
+                    className="sm-prelayer-logo"
+                    width={336}
+                    height={125}
+                    decoding="async"
+                  />
+                ) : null}
+              </div>
+            ));
           })()}
         </div>
         {!glassHeader ? navHeader : null}

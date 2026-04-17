@@ -45,23 +45,23 @@ const StudioLeaders: React.FC = () => {
   return (
     <section
       id="leaders"
-      className="py-16 sm:py-24 md:py-28 px-4 sm:px-6 md:px-8 max-w-[1400px] mx-auto w-full min-w-0 relative z-10"
+      className="py-10 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 max-w-[1400px] mx-auto w-full min-w-0 relative z-10"
     >
       <Reveal delay={0.08}>
-        <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tighter text-center mb-12 md:mb-16">
+        <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tighter text-center mb-8 md:mb-10">
           Команда
         </h2>
       </Reveal>
 
       <div
-        className="grid gap-10 md:gap-8 xl:gap-10 items-start justify-items-stretch w-full"
+        className="grid gap-8 md:gap-6 xl:gap-8 items-start justify-items-stretch w-full"
         style={{
           gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 360px), 1fr))',
         }}
       >
         {leaders.map((L, i) => (
           <Reveal key={L.handle} delay={0.05 + i * 0.05} width="100%" defaultVisible>
-            <div className="w-full flex justify-center min-h-[min(520px,92svh)] py-1 box-border">
+            <div className="w-full flex justify-center min-h-[min(460px,78svh)] py-1 box-border">
               <ProfileCard
                 compact
                 name={L.name}

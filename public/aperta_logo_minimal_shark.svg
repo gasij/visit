@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1400" height="520" viewBox="0 0 1400 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradShark" x1="120" y1="120" x2="520" y2="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1D1464"/>
+      <stop offset="1" stop-color="#5D3DF5"/>
+    </linearGradient>
+    <linearGradient id="gradAccent" x1="250" y1="200" x2="430" y2="370" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6D51FF"/>
+      <stop offset="1" stop-color="#2D1B8F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- circular ring -->
+  <path d="M226 109
+           C168 124, 120 175, 113 242
+           C109 284, 122 325, 149 358"
+        stroke="#1B1261" stroke-width="12" stroke-linecap="round"/>
+  <path d="M179 401
+           C232 445, 314 454, 379 425
+           C436 400, 476 347, 481 282"
+        stroke="#1B1261" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- shark body -->
+  <path d="M178 395
+           C222 329, 271 277, 344 236
+           C381 215, 419 198, 470 193
+           C446 224, 420 246, 396 267
+           C376 268, 357 266, 338 260
+           C312 252, 284 248, 259 249
+           C230 281, 204 319, 178 395Z"
+        fill="url(#gradShark)" stroke="#160D55" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- dorsal contour / top fin -->
+  <path d="M230 193
+           C263 180, 299 180, 336 194
+           C370 185, 415 184, 470 193
+           C431 163, 353 162, 294 171
+           C265 175, 245 182, 230 193Z"
+        fill="#1B1261"/>
+
+  <!-- inner accent swoosh -->
+  <path d="M242 350
+           C291 300, 336 270, 417 255
+           C382 281, 355 309, 334 360
+           C327 336, 315 327, 292 332
+           C273 337, 260 344, 242 350Z"
+        fill="url(#gradAccent)" stroke="#2A1785" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- eye -->
+  <path d="M376 214
+           C394 209, 415 211, 430 221
+           C412 228, 394 229, 376 214Z"
+        fill="#24156F"/>
+
+  <!-- wordmark -->
+  <text x="540" y="305"
+        font-family="Inter, Arial, Helvetica, sans-serif"
+        font-size="160"
+        font-weight="300"
+        letter-spacing="2"
+        fill="#1B1261">aperta</text>
+</svg>

@@ -24,10 +24,10 @@ const Hero: React.FC = () => {
   const hSub = narrow ? 'clamp(82px, 22vw, 260px)' : 'clamp(120px, 22vw, 300px)';
 
   return (
-    <section className="w-full min-w-0 pt-24 pb-12 px-4 sm:pt-32 sm:pb-16 sm:px-6 md:pt-48 md:pb-20 md:px-8 lg:px-12 xl:px-16">
+    <section className="w-full min-w-0 pt-20 pb-8 px-4 sm:pt-28 sm:pb-12 sm:px-6 md:pt-36 md:pb-14 md:px-8 lg:px-12 xl:px-16">
       <div className="relative min-w-0 w-full">
         <Reveal defaultVisible width="100%">
-          <div className="mb-8 sm:mb-12 flex flex-col gap-1 sm:gap-2 min-w-0">
+          <div className="mb-6 sm:mb-8 flex flex-col gap-1 sm:gap-2 min-w-0">
             <div style={{ position: 'relative', height: hMain }} className="w-full min-w-0 overflow-visible">
               <TextPressure
                 text="aperta"
@@ -119,7 +119,7 @@ const Hero: React.FC = () => {
         </Reveal>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-end mt-12 md:mt-24">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-end mt-8 md:mt-14">
         <Reveal delay={0.2} width="100%">
           <div className={`max-w-md ${heroIntroPanelClass}`}>
             <p className="text-zinc-400 text-base sm:text-lg leading-relaxed">

@@ -8,8 +8,8 @@
 
 .card-grid {
   display: grid;
-  gap: clamp(0.55em, 1.2vw, 0.85em);
-  padding: clamp(0.65em, 2vw, 1em);
+  gap: clamp(0.45em, 1vw, 0.7em);
+  padding: clamp(0.45em, 1.4vw, 0.75em);
   max-width: 54em;
   margin: 0 auto;
   font-size: clamp(1rem, 0.9rem + 0.5vw, 1.35rem);

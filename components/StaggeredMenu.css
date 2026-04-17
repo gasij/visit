@@ -191,6 +191,23 @@
   opacity: 0;
 }
 
+.sm-prelayer--with-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.75rem, 3vw, 1.5rem);
+  box-sizing: border-box;
+}
+
+.sm-prelayer-logo {
+  width: min(96%, 400px);
+  height: auto;
+  max-height: min(52vh, 280px);
+  object-fit: contain;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
 .sm-panel-inner {
   flex: 1;
   display: flex;

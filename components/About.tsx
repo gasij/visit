@@ -5,9 +5,9 @@ import Reveal from './Reveal';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full min-w-0">
-      <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-20 items-start">
-        <div className="space-y-12">
+    <section id="about" className="py-10 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full min-w-0">
+      <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-14 items-start">
+        <div className="space-y-8">
           <Reveal>
             <div className="flex items-center gap-4">
               <span className="font-mono text-zinc-500">... /О себе ...</span>

@@ -310,10 +310,10 @@ const ArticleList: React.FC = () => {
   const currentArticles = ALL_ARTICLES.slice(startIndex, startIndex + itemsPerPage);
 
   return (
-    <section id="articles" className="py-16 sm:py-24 md:py-32 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full min-w-0 overflow-x-hidden">
+    <section id="articles" className="py-10 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full min-w-0 overflow-x-hidden">
       <ArticleModal article={openArticle} onClose={closeModal} />
 
-      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6 sm:mb-10 overflow-hidden">
+      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-5 sm:mb-7 overflow-hidden">
         <div className={`max-w-xl order-2 sm:order-1 ${articleIntroPanelClass}`}>
           <div className="flex flex-wrap items-center gap-x-1.5 gap-y-2">
             <span className="font-mono text-zinc-400 text-xs sm:text-sm shrink-0">Стек:</span>
@@ -337,58 +337,9 @@ const ArticleList: React.FC = () => {
         </h2>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 relative">
-        <div className="absolute left-[-60px] md:left-[-100px] top-0 hidden lg:flex flex-col gap-4 sticky h-fit">
-          {[...Array(totalPages)].map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => handlePageChange(i + 1)}
-              className={`w-14 h-14 rounded-full flex items-center justify-center font-bold transition-all duration-300 border ${
-                currentPage === i + 1
-                  ? 'bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.3)]'
-                  : 'border-zinc-800 text-zinc-500 hover:border-zinc-500 hover:text-zinc-300'
-              }`}
-            >
-              {i + 1}
-            </button>
-          ))}
-
-          <button
-            type="button"
-            onClick={() => handlePageChange(currentPage === totalPages ? 1 : currentPage + 1)}
-            className="w-14 h-14 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-white hover:border-zinc-500 transition-all active:scale-90"
-          >
-            <ArrowDown
-              size={20}
-              className={
-                currentPage === totalPages
-                  ? 'rotate-180 transition-transform duration-500'
-                  : 'transition-transform duration-500'
-              }
-            />
-          </button>
-        </div>
-
-        <div className="flex lg:hidden flex-wrap items-center justify-center gap-2 mb-8 col-span-full">
-          {[...Array(totalPages)].map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={() => handlePageChange(i + 1)}
-              className={`min-w-[40px] h-10 px-3 rounded-full flex items-center justify-center font-bold text-sm transition-all border ${
-                currentPage === i + 1
-                  ? 'bg-white text-black border-white'
-                  : 'border-zinc-800 text-zinc-500 hover:border-zinc-500'
-              }`}
-            >
-              {i + 1}
-            </button>
-          ))}
-        </div>
-
+      <div className="w-full min-w-0">
         <div
-          className={`grid md:grid-cols-2 gap-4 sm:gap-8 md:col-span-2 transition-all duration-500 ease-in-out transform w-full min-w-0 ${
+          className={`grid md:grid-cols-2 gap-4 sm:gap-8 transition-all duration-500 ease-in-out transform w-full min-w-0 ${
             isAnimating ? 'opacity-0 translate-y-8 blur-sm' : 'opacity-100 translate-y-0 blur-0'
           }`}
         >
@@ -431,6 +382,41 @@ const ArticleList: React.FC = () => {
               />
             ))}
         </div>
+
+        <nav
+          className="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3 border-t border-zinc-800/80 pt-6 sm:pt-8"
+          aria-label="Переключение страниц статей"
+        >
+          {[...Array(totalPages)].map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => handlePageChange(i + 1)}
+              className={`h-11 w-11 sm:h-12 sm:w-12 shrink-0 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 border ${
+                currentPage === i + 1
+                  ? 'bg-white text-black border-white shadow-[0_0_20px_rgba(255,255,255,0.2)]'
+                  : 'border-zinc-800 text-zinc-500 hover:border-zinc-500 hover:text-zinc-300'
+              }`}
+            >
+              {i + 1}
+            </button>
+          ))}
+          <button
+            type="button"
+            onClick={() => handlePageChange(currentPage === totalPages ? 1 : currentPage + 1)}
+            className="h-11 w-11 sm:h-12 sm:w-12 shrink-0 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-white hover:border-zinc-500 transition-all active:scale-95"
+            aria-label={currentPage === totalPages ? 'К первой странице' : 'Следующая страница'}
+          >
+            <ArrowDown
+              size={20}
+              className={
+                currentPage === totalPages
+                  ? 'rotate-180 transition-transform duration-500'
+                  : 'transition-transform duration-500'
+              }
+            />
+          </button>
+        </nav>
       </div>
     </section>
   );

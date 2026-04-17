@@ -7,9 +7,9 @@ const techTagClass =
 
 const Projects: React.FC = () => {
   return (
-    <section id="projects" className="py-12 sm:py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full min-w-0 overflow-x-hidden">
+    <section id="projects" className="py-8 sm:py-12 md:py-14 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full min-w-0 overflow-x-hidden">
       {/* Project: Gostat */}
-      <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-20 items-center mb-24 sm:mb-40 md:mb-60 relative">
+      <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center mb-14 sm:mb-22 md:mb-28 relative">
         <div className="order-2 lg:order-1 space-y-5 sm:space-y-8 min-w-0">
           <h3 className="text-2xl sm:text-4xl font-bold">Gostat</h3>
           <div className="flex flex-wrap gap-2">
@@ -47,7 +47,7 @@ const Projects: React.FC = () => {
       </div>
 
       {/* Project: Kana Master */}
-      <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-20 items-center mb-24 sm:mb-40 md:mb-60 relative">
+      <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center mb-14 sm:mb-22 md:mb-28 relative">
         <div className="order-1 relative w-full max-sm:min-h-[min(92vw,400px)] max-sm:h-[min(92vw,400px)] max-sm:overflow-hidden h-[min(52vw,220px)] min-h-[200px] sm:h-[320px] sm:min-h-0 md:h-[420px] lg:h-[500px]">
            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] aspect-video bg-zinc-900 border border-zinc-800 rounded-2xl sm:rounded-[4rem] z-0 opacity-50"></div>
            <div className="absolute top-[8%] left-[6%] sm:top-10 sm:left-10 w-[45%] max-sm:max-h-[78%] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl z-20 border border-zinc-800 transform rotate-2">

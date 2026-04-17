@@ -4,10 +4,10 @@ import { Github, Linkedin, Send, Facebook, Instagram, Mail } from 'lucide-react'
 
 const Footer: React.FC = () => {
   return (
-    <footer id="contacts" className="py-12 sm:py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto overflow-hidden w-full min-w-0">
-      <div className="relative mb-16 sm:mb-28 md:mb-40">
+    <footer id="contacts" className="py-10 sm:py-14 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto overflow-hidden w-full min-w-0">
+      <div className="relative mb-10 sm:mb-16 md:mb-20">
         <div className="absolute top-0 left-[-10%] w-[120%] h-[120%] border border-zinc-800 rounded-full -z-10"></div>
-        <div className="grid md:grid-cols-2 gap-12 items-end">
+        <div className="grid md:grid-cols-2 gap-8 items-end">
           <div className="space-y-4">
             <h2 className="text-[9vw] sm:text-[8vw] md:text-[6.5rem] font-black leading-[0.88] sm:leading-[0.82] tracking-tighter break-words">
               aperta

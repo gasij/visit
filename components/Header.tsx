@@ -82,7 +82,7 @@ const Header: React.FC = () => {
         >
           <div
             className={[
-              'mx-auto max-w-7xl flex justify-between items-center gap-2 min-h-[56px] md:min-h-[60px]',
+              'mx-auto max-w-7xl flex justify-between items-center gap-2 min-h-[64px] md:min-h-[72px]',
               'rounded-2xl md:rounded-[1.35rem]',
               'border border-white/[0.12]',
               'bg-zinc-950/45 shadow-[0_8px_32px_rgba(0,0,0,0.35)]',
@@ -91,7 +91,14 @@ const Header: React.FC = () => {
             ].join(' ')}
           >
             <a href="#" className="flex items-center shrink-0 z-10 min-w-0 pl-1 sm:pl-2 md:pl-3">
-              <span className="text-lg sm:text-xl font-semibold tracking-[0.12em] text-white lowercase">aperta</span>
+              <img
+                src="/aperta_logo_minimal_shark.svg"
+                alt="aperta"
+                className="h-12 w-auto md:h-14 lg:h-16"
+                width={672}
+                height={250}
+                decoding="async"
+              />
             </a>
 
             <nav className="flex gap-8 lg:gap-12 text-sm uppercase tracking-widest text-zinc-400">
