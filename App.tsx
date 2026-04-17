@@ -30,7 +30,7 @@ const App: React.FC = () => {
       {isLoading && <LoadingScreen onFinished={() => setIsLoading(false)} />}
       <div className={`min-h-screen bg-black text-white selection:bg-white selection:text-black overflow-x-hidden transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         {/* Фон: при prefers-reduced-motion — статика (без WebGL); иначе ColorBends и на телефоне */}
-        <div className="fixed inset-0 z-0">
+        <div className="app-fixed-webgl-bg fixed inset-0 z-0">
           {liteBg ? (
             <div
               className="absolute inset-0 bg-[#060010]"

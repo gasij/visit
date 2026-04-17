@@ -16,6 +16,14 @@ body {
   overflow-x: hidden;
 }
 
+/* Отдельный композитный слой для fixed WebGL — меньше мерцания при скролле на iOS/Android */
+.app-fixed-webgl-bg {
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  isolation: isolate;
+}
+
 .font-mono {
   font-family: 'JetBrains Mono', 'JetBrainsMono', monospace;
 }

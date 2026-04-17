@@ -184,7 +184,15 @@ export default function ColorBends({
     });
     rendererRef.current = renderer;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+
+    const maxPixelRatio = () => {
+      const compact =
+        typeof window !== 'undefined' &&
+        window.matchMedia('(pointer: coarse), (max-width: 768px)').matches;
+      return Math.min(window.devicePixelRatio || 1, compact ? 1.5 : 2);
+    };
+
+    renderer.setPixelRatio(maxPixelRatio());
     renderer.setClearColor(0x000000, transparent ? 0 : 1);
     renderer.domElement.style.width = '100%';
     renderer.domElement.style.height = '100%';
@@ -192,22 +200,51 @@ export default function ColorBends({
     container.appendChild(renderer.domElement);
 
     const clock = new THREE.Clock();
+    let lastW = 0;
+    let lastH = 0;
+    let resizeDebounce: ReturnType<typeof setTimeout> | null = null;
 
-    const handleResize = () => {
-      const w = container.clientWidth || 1;
-      const h = container.clientHeight || 1;
+    const applyResize = () => {
+      const w = Math.max(1, Math.round(container.clientWidth));
+      const h = Math.max(1, Math.round(container.clientHeight));
+      if (w === lastW && h === lastH) return;
+      lastW = w;
+      lastH = h;
+      renderer.setPixelRatio(maxPixelRatio());
       renderer.setSize(w, h, false);
       material.uniforms.uCanvas.value.set(w, h);
     };
 
-    handleResize();
+    const scheduleResize = () => {
+      if (resizeDebounce) clearTimeout(resizeDebounce);
+      resizeDebounce = setTimeout(() => {
+        resizeDebounce = null;
+        applyResize();
+      }, 120);
+    };
+
+    applyResize();
+
+    const onVisibility = () => {
+      if (!document.hidden) {
+        lastW = 0;
+        lastH = 0;
+        applyResize();
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+
+    const onCtxLost = (e: Event) => {
+      e.preventDefault();
+    };
+    renderer.domElement.addEventListener('webglcontextlost', onCtxLost, false);
 
     if ('ResizeObserver' in window) {
-      const ro = new ResizeObserver(handleResize);
+      const ro = new ResizeObserver(() => scheduleResize());
       ro.observe(container);
       resizeObserverRef.current = ro;
     } else {
-      window.addEventListener('resize', handleResize);
+      window.addEventListener('resize', scheduleResize);
     }
 
     const loop = () => {
@@ -233,8 +270,11 @@ export default function ColorBends({
 
     return () => {
       if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+      if (resizeDebounce) clearTimeout(resizeDebounce);
+      document.removeEventListener('visibilitychange', onVisibility);
+      renderer.domElement.removeEventListener('webglcontextlost', onCtxLost, false);
       if (resizeObserverRef.current) resizeObserverRef.current.disconnect();
-      else window.removeEventListener('resize', handleResize);
+      else window.removeEventListener('resize', scheduleResize);
       geometry.dispose();
       material.dispose();
       renderer.dispose();
