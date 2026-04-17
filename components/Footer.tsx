@@ -10,15 +10,14 @@ const Footer: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-12 items-end">
           <div className="space-y-4">
             <h2 className="text-[9vw] sm:text-[8vw] md:text-[6.5rem] font-black leading-[0.88] sm:leading-[0.82] tracking-tighter break-words">
-              Bloom-<br />studio
+              aperta
             </h2>
             <div className="text-zinc-500 uppercase tracking-widest text-xs font-mono ml-1 sm:ml-4">
               Студия веб-разработки
             </div>
           </div>
           
-          <div className="space-y-12 md:pl-20">
-             <div className="text-zinc-500 font-mono">... /Контакты ...</div>
+          <div className="md:pl-20">
              <nav className="flex flex-wrap gap-x-8 sm:gap-x-12 gap-y-6 text-sm uppercase tracking-widest">
                 <a href="#" className="hover:text-white transition-colors">Главная</a>
                 <a href="#leaders" className="hover:text-white transition-colors">Команда</a>

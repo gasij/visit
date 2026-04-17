@@ -88,7 +88,7 @@ const Experience: React.FC = () => {
       </div>
 
       <div className="mt-8 sm:mt-12 text-left sm:text-right flex flex-col sm:block gap-1">
-        <span className="text-zinc-500 uppercase tracking-widest text-[10px] sm:text-xs sm:mr-4">Bloom-studio</span>
+        <span className="text-zinc-500 tracking-widest text-[10px] sm:text-xs sm:mr-4">aperta</span>
         <span className="italic text-base sm:text-xl md:text-2xl font-bold text-white break-words">
           React · Next.js · .NET · Node · Directus · PostgreSQL · 1С
         </span>

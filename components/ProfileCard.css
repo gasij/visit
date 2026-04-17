@@ -47,7 +47,7 @@
  * (дети absolute), grid даёт minmax(auto)→0 → «полоска».
  */
 .pc-card-wrapper--compact {
-  width: min(100%, 360px);
+  width: min(100%, 420px);
   max-width: 100%;
 }
 
@@ -62,10 +62,56 @@
 .pc-card-wrapper--compact .pc-card {
   width: 100%;
   max-width: none;
-  height: min(72svh, 460px);
-  min-height: 400px;
-  max-height: 480px;
+  height: min(78svh, 520px);
+  min-height: 460px;
+  max-height: 540px;
   box-sizing: border-box;
+}
+
+/* Больше места под имя/роль; иначе кириллица вылезает из-под скругления */
+.pc-card-wrapper--compact .pc-content:not(.pc-avatar-content) {
+  max-height: 42%;
+}
+
+.pc-card-wrapper--compact .pc-details {
+  max-height: 100%;
+  padding: 12px 14px 16px;
+}
+
+.pc-card-wrapper--compact .pc-details h3,
+.pc-card-wrapper--compact .pc-details p {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+.pc-card-wrapper--compact .pc-avatar-content .avatar {
+  --avatar-d: min(236px, 52vmin, 72vw);
+  width: var(--avatar-d);
+  height: var(--avatar-d);
+  min-width: var(--avatar-d);
+  min-height: var(--avatar-d);
+  top: 24%;
+}
+
+.pc-card-wrapper--compact .pc-user-info {
+  flex-wrap: wrap;
+  row-gap: 10px;
+  align-content: center;
+}
+
+.pc-card-wrapper--compact .pc-user-text {
+  min-width: 0;
+  flex: 1 1 120px;
+}
+
+.pc-card-wrapper--compact .pc-handle {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.pc-card-wrapper--compact .pc-contact-btn {
+  flex-shrink: 0;
 }
 
 .pc-behind {
@@ -489,17 +535,25 @@
 @media (max-width: 768px) {
   .pc-card-wrapper--compact {
     width: calc(100vw - 2rem);
-    max-width: 360px;
+    max-width: 420px;
   }
   .pc-card-wrapper--compact .pc-card {
-    min-height: 360px;
-    height: min(68svh, 440px);
-    max-height: 440px;
+    min-height: 420px;
+    height: min(74svh, 500px);
+    max-height: 520px;
     max-width: 100%;
   }
   .pc-card {
     height: 70svh;
     max-height: 450px;
+  }
+  .pc-card-wrapper--compact .pc-avatar-content .avatar {
+    top: 25%;
+    --avatar-d: min(220px, 50vmin, 68vw);
+    width: var(--avatar-d);
+    height: var(--avatar-d);
+    min-width: var(--avatar-d);
+    min-height: var(--avatar-d);
   }
   .pc-avatar-content .avatar {
     top: 29%;
@@ -542,6 +596,19 @@
   .pc-card {
     height: 60svh;
     max-height: 380px;
+  }
+  .pc-card-wrapper--compact .pc-card {
+    min-height: 400px;
+    height: min(72svh, 500px);
+    max-height: 520px;
+  }
+  .pc-card-wrapper--compact .pc-avatar-content .avatar {
+    top: 26%;
+    --avatar-d: min(204px, 48vmin, 70vw);
+    width: var(--avatar-d);
+    height: var(--avatar-d);
+    min-width: var(--avatar-d);
+    min-height: var(--avatar-d);
   }
   .pc-avatar-content .avatar {
     top: 30%;
@@ -586,6 +653,19 @@
   .pc-card {
     height: 55svh;
     max-height: 320px;
+  }
+  .pc-card-wrapper--compact .pc-card {
+    min-height: 380px;
+    height: min(78svh, 480px);
+    max-height: 500px;
+  }
+  .pc-card-wrapper--compact .pc-avatar-content .avatar {
+    top: 27%;
+    --avatar-d: min(188px, 46vmin, 66vw);
+    width: var(--avatar-d);
+    height: var(--avatar-d);
+    min-width: var(--avatar-d);
+    min-height: var(--avatar-d);
   }
   .pc-avatar-content .avatar {
     top: 31%;

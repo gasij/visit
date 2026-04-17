@@ -21,7 +21,6 @@ export type StaggeredMenuProps = {
   displaySocials?: boolean;
   displayItemNumbering?: boolean;
   className?: string;
-  logoUrl?: string;
   logoHref?: string;
   menuButtonColor?: string;
   openMenuButtonColor?: string;
@@ -47,7 +46,6 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   displaySocials = true,
   displayItemNumbering = true,
   className,
-  logoUrl = '/src/assets/logos/reactbits-gh-white.svg',
   logoHref = '#',
   menuButtonColor = '#fff',
   openMenuButtonColor = '#fff',
@@ -426,22 +424,22 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     <header
       className={
         glassHeader
-          ? 'staggered-menu-header staggered-menu-header--in-glass pointer-events-auto mx-auto max-w-7xl flex min-h-[52px] min-w-0 items-center justify-between gap-3 sm:min-h-[60px] md:min-h-[72px] rounded-2xl border border-white/[0.12] bg-zinc-950/45 px-3 py-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl backdrop-saturate-150 sm:px-5 sm:py-3 md:rounded-[1.35rem] md:px-7 md:py-4'
+          ? 'staggered-menu-header staggered-menu-header--in-glass pointer-events-auto mx-auto max-w-7xl flex min-h-[56px] min-w-0 items-center justify-between gap-2 sm:min-h-[56px] md:min-h-[60px] rounded-2xl border border-white/[0.12] bg-zinc-950/45 px-3 py-2 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl backdrop-saturate-150 sm:px-4 sm:py-2 md:rounded-[1.35rem] md:px-6 md:py-2.5'
           : 'staggered-menu-header'
       }
       aria-label="Навигация"
     >
       <a
         href={logoHref}
-        className={`sm-logo min-w-0 shrink-0 ${glassHeader ? 'pl-2 sm:pl-3 md:pl-5' : ''}`}
+        className={`sm-logo min-w-0 shrink-0 ${glassHeader ? 'pl-1 sm:pl-2 md:pl-3' : ''}`}
         aria-label="На главную"
         onClick={() => closeMenu()}
       >
-        <img src={logoUrl} alt="" className="sm-logo-img object-contain object-left drop-shadow-sm" draggable={false} width={110} height={24} />
+        <span className="sm-logo-wordmark">aperta</span>
       </a>
       <button
         ref={toggleBtnRef}
-        className={`sm-toggle shrink-0 ${glassHeader ? 'mr-2 sm:mr-4 md:mr-6' : ''}`}
+        className={`sm-toggle shrink-0 ${glassHeader ? 'mr-1.5 sm:mr-3 md:mr-4' : ''}`}
         aria-label={open ? closeLabel : openLabel}
         aria-expanded={open}
         aria-controls="staggered-menu-panel"
@@ -469,7 +467,7 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     <>
       {glassHeader ? (
         <div
-          className={`staggered-menu-glass-shell pointer-events-none fixed inset-x-0 top-0 z-[72] px-3 pt-[max(0.75rem,env(safe-area-inset-top))] sm:px-5 sm:pt-4 md:px-6 md:pt-5 ${glassShellClassName ?? ''}`}
+          className={`staggered-menu-glass-shell pointer-events-none fixed inset-x-0 top-0 z-[72] px-3 pt-[max(0.5rem,env(safe-area-inset-top))] sm:px-5 sm:pt-3 md:px-6 md:pt-3 ${glassShellClassName ?? ''}`}
           data-open={open || undefined}
           style={accentColor ? ({ ['--sm-accent' as string]: accentColor } as React.CSSProperties) : undefined}
         >

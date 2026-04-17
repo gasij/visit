@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
           <div className="mb-8 sm:mb-12 flex flex-col gap-1 sm:gap-2 min-w-0">
             <div style={{ position: 'relative', height: hMain }} className="w-full min-w-0 overflow-visible">
               <TextPressure
-                text="BLOOM-STUDIO"
+                text="aperta"
                 flex
                 alpha={false}
                 stroke={false}
@@ -42,6 +42,7 @@ const Hero: React.FC = () => {
                 minFontSize={minMain}
                 fontScale={0.92}
                 verticalAlign="center"
+                colorFollowsMotion
               />
             </div>
             {/* Подзаголовки отдельно на всю ширину — не делим ряд с кнопкой, без наезда */}
@@ -66,6 +67,7 @@ const Hero: React.FC = () => {
                     minFontSize={minSubtitle}
                     fontScale={0.7}
                     verticalAlign="center"
+                    colorFollowsMotion
                   />
                 </div>
                 <div
@@ -87,6 +89,7 @@ const Hero: React.FC = () => {
                     minFontSize={minSubtitle}
                     fontScale={0.7}
                     verticalAlign="center"
+                    colorFollowsMotion
                   />
                 </div>
               </div>

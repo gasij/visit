@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { MessageSquare, X, Send, Sparkles } from 'lucide-react';
 
-const PANEL_TITLE = 'Ассистент Bloom';
+const PANEL_TITLE = 'Ассистент aperta';
 const DURATION_MS = 320;
 
 const AIAssistant: React.FC = () => {

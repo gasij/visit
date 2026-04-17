@@ -44,6 +44,8 @@ interface TextPressureProps {
   /** Одинаковые буквы: без анимации wght/wdth от курсора */
   uniformGlyphs?: boolean;
   fixedWght?: number;
+  /** Цвет каждой буквы меняется вместе с осями переменного начертания (движение от курсора) */
+  colorFollowsMotion?: boolean;
   /** Центр + gap вместо space-between — визуально ровнее */
   evenLetterGap?: boolean;
   /** Доп. масштаб кегля после расчёта (например 0.9) */
@@ -69,6 +71,7 @@ const TextPressure: FC<TextPressureProps> = ({
   verticalAlign = 'center',
   uniformGlyphs = false,
   fixedWght = 700,
+  colorFollowsMotion = false,
   evenLetterGap = false,
   fontScale = 1,
 }) => {
@@ -167,9 +170,10 @@ const TextPressure: FC<TextPressureProps> = ({
       mouseRef.current.x += (cursorRef.current.x - mouseRef.current.x) / follow;
       mouseRef.current.y += (cursorRef.current.y - mouseRef.current.y) / follow;
 
-      if (frame % 2 === 0 && titleRef.current) {
+      if (titleRef.current) {
         const titleRect = titleRef.current.getBoundingClientRect();
         const maxDist = titleRect.width / 2;
+        const tickFont = frame % 2 === 0;
 
         spansRef.current.forEach((span) => {
           if (!span) return;
@@ -189,11 +193,27 @@ const TextPressure: FC<TextPressureProps> = ({
 
           const newFontVariationSettings = `'wght' ${wght}, 'wdth' ${wdth}, 'ital' ${italVal}`;
 
-          if (span.style.fontVariationSettings !== newFontVariationSettings) {
-            span.style.fontVariationSettings = newFontVariationSettings;
+          if (tickFont) {
+            if (span.style.fontVariationSettings !== newFontVariationSettings) {
+              span.style.fontVariationSettings = newFontVariationSettings;
+            }
+            if (alpha && span.style.opacity !== alphaVal) {
+              span.style.opacity = alphaVal;
+            }
           }
-          if (alpha && span.style.opacity !== alphaVal) {
-            span.style.opacity = alphaVal;
+          if (colorFollowsMotion) {
+            const tW = (wght - 100) / 800;
+            const tWd = (wdth - 5) / 195;
+            const tDist = Math.min(1, d / maxDist);
+            // Широкий сдвиг по кругу (≈160°+), заметные скачки насыщенности и контраста
+            let hue = 185 + tW * 130 + tWd * 72 + (1 - tDist) * 88;
+            hue = ((hue % 360) + 360) % 360;
+            const sat = 88 + tW * 11 + (1 - tDist) * 10;
+            const light = 68 + tDist * 20 + tW * 10 + tWd * 5;
+            const nextColor = `hsl(${hue.toFixed(1)}, ${sat.toFixed(1)}%, ${light.toFixed(1)}%)`;
+            if (span.style.color !== nextColor) {
+              span.style.color = nextColor;
+            }
           }
         });
       }
@@ -203,7 +223,7 @@ const TextPressure: FC<TextPressureProps> = ({
 
     animate();
     return () => cancelAnimationFrame(rafId);
-  }, [uniformGlyphs, width, weight, italic, alpha]);
+  }, [uniformGlyphs, width, weight, italic, alpha, colorFollowsMotion]);
 
   const styleElement = useMemo(
     () => (

@@ -27,8 +27,8 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFinished }) => {
   return (
     <div className={`fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center transition-transform duration-1000 ease-[cubic-bezier(0.85,0,0.15,1)] ${exit ? '-translate-y-full' : 'translate-y-0'}`}>
       <div className="relative overflow-hidden mb-8">
-        <h1 className="text-4xl md:text-6xl font-black tracking-tighter uppercase animate-pulse">
-          BLOOM STUDIO
+        <h1 className="text-4xl md:text-6xl font-black tracking-tighter animate-pulse">
+          aperta
         </h1>
       </div>
       

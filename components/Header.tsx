@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import bloomLogo from '../bloomcode_transparent.png';
 import StaggeredMenu from './StaggeredMenu';
 
 const navLinks = [
@@ -78,25 +77,21 @@ const Header: React.FC = () => {
     <>
       <header className="hidden md:block fixed top-0 left-0 right-0 z-50 pointer-events-none">
         <div
-          className="pointer-events-auto px-3 pt-3 sm:px-5 sm:pt-4 md:px-6 md:pt-5"
+          className="pointer-events-auto px-3 pt-2 sm:px-5 sm:pt-3 md:px-6 md:pt-3"
           style={barMotionStyle}
         >
           <div
             className={[
-              'mx-auto max-w-7xl flex justify-between items-center gap-3 min-h-[52px] sm:min-h-[60px] md:min-h-[72px]',
+              'mx-auto max-w-7xl flex justify-between items-center gap-2 min-h-[56px] md:min-h-[60px]',
               'rounded-2xl md:rounded-[1.35rem]',
               'border border-white/[0.12]',
               'bg-zinc-950/45 shadow-[0_8px_32px_rgba(0,0,0,0.35)]',
               'backdrop-blur-xl backdrop-saturate-150',
-              'px-3 py-2.5 sm:px-5 sm:py-3 md:px-7 md:py-4',
+              'px-3 py-2 sm:px-4 sm:py-2 md:px-6 md:py-2.5',
             ].join(' ')}
           >
-            <a href="#" className="flex items-center shrink-0 z-10 min-w-0">
-              <img
-                src={bloomLogo}
-                alt="Bloom"
-                className="h-8 sm:h-9 md:h-14 w-auto max-w-[min(40vw,180px)] object-contain object-left drop-shadow-sm"
-              />
+            <a href="#" className="flex items-center shrink-0 z-10 min-w-0 pl-1 sm:pl-2 md:pl-3">
+              <span className="text-lg sm:text-xl font-semibold tracking-[0.12em] text-white lowercase">aperta</span>
             </a>
 
             <nav className="flex gap-8 lg:gap-12 text-sm uppercase tracking-widest text-zinc-400">
@@ -106,16 +101,6 @@ const Header: React.FC = () => {
                 </a>
               ))}
             </nav>
-
-            <div className="flex items-center gap-2 sm:gap-4 shrink-0">
-              <div className="relative group cursor-pointer flex items-center justify-center">
-                <div className="absolute inset-[-20px] sm:inset-[-28px] md:inset-[-32px] w-[64px] h-[64px] sm:w-[76px] sm:h-[76px] md:w-[88px] md:h-[88px] border border-white/15 rounded-full group-hover:border-white/35 transition-colors duration-300 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
-                <div className="flex flex-col items-center text-[10px] sm:text-xs font-mono relative z-10 pt-1 sm:pt-2 w-8">
-                  <span className="text-white">Ru</span>
-                  <span className="text-zinc-500">En</span>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </header>
@@ -132,7 +117,6 @@ const Header: React.FC = () => {
           openMenuButtonColor="#ffffff"
           changeMenuColorOnOpen
           colors={['#1a1224', '#2a1f3d', '#3d2d5c', '#5227FF']}
-          logoUrl={bloomLogo}
           logoHref="#"
           accentColor="#5227FF"
           socialSectionTitle="Соцсети"

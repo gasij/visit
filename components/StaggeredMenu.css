@@ -40,24 +40,6 @@
   z-index: 1;
 }
 
-.staggered-menu-header--in-glass .sm-logo-img {
-  height: 2rem;
-  width: auto;
-  max-width: min(40vw, 180px);
-}
-
-@media (min-width: 640px) {
-  .staggered-menu-header--in-glass .sm-logo-img {
-    height: 2.25rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .staggered-menu-header--in-glass .sm-logo-img {
-    height: 3.5rem;
-  }
-}
-
 .staggered-menu-header > * {
   pointer-events: auto;
 }
@@ -68,11 +50,14 @@
   user-select: none;
 }
 
-.sm-logo-img {
+.sm-logo-wordmark {
   display: block;
-  height: 32px;
-  width: auto;
-  object-fit: contain;
+  font-size: clamp(1rem, 3.2vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  color: #fff;
+  text-transform: lowercase;
 }
 
 .sm-toggle {
