@@ -39,6 +39,17 @@ const leaders = [
     innerGradient:
       'linear-gradient(145deg,hsla(0, 55%, 30%, 0.14) 0%,hsla(350, 45%, 40%, 0.08) 100%)',
   },
+  {
+    name: 'Кирилл',
+    title: 'Full-stack разработчик',
+    handle: 'kirill_k',
+    status: 'В сети',
+    contactText: 'Написать',
+    avatarUrl: 'https://i.pinimg.com/736x/71/6c/39/716c3923818631c330e2caeb1ccae7d4.jpg',
+    behindGlowColor: 'hsla(188, 85%, 48%, 0.45)',
+    innerGradient:
+      'linear-gradient(145deg,hsla(195, 50%, 32%, 0.14) 0%,hsla(175, 45%, 42%, 0.08) 100%)',
+  },
 ];
 
 const StudioLeaders: React.FC = () => {
