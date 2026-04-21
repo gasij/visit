@@ -6,7 +6,7 @@ const navLinks = [
   { href: '#magicbento', label: 'Способности' },
   { href: '#projects', label: 'Проекты' },
   { href: '#articles', label: 'Статьи' },
-  { href: '#contacts', label: 'Контакты' },
+  { href: '#contact', label: 'Контакты' },
 ];
 
 const staggeredMenuItems = navLinks.map(({ href, label }) => ({

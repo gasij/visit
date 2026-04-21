@@ -24,6 +24,7 @@ const Footer: React.FC = () => {
                 <a href="#about" className="hover:text-white transition-colors">О себе</a>
                 <a href="#projects" className="hover:text-white transition-colors">Проекты</a>
                 <a href="#articles" className="hover:text-white transition-colors">Статьи</a>
+                <a href="#contact" className="hover:text-white transition-colors">Связь</a>
              </nav>
           </div>
         </div>
