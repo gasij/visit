@@ -9,14 +9,27 @@
 @source "./*.tsx";
 
 html {
-  /* Резерв под полосу прокрутки — контент не прыгает при overflow:hidden на body (модалки) */
+  /* Резерв под скролл — меньше сдвиг при overflow:hidden на body (модалки) */
   scrollbar-gutter: stable;
-  scrollbar-width: none;
+  scrollbar-color: #333 #000;
+  scrollbar-width: thin;
 }
 
 html::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+  width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background: #000;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: #444;
 }
 
 body {

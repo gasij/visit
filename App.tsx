@@ -62,7 +62,7 @@ const App: React.FC = () => {
       </div>
 
       <div
-        className={`relative z-10 min-h-screen bg-black text-white selection:bg-white selection:text-black overflow-x-hidden transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+        className={`relative z-10 min-h-screen text-white selection:bg-white selection:text-black overflow-x-hidden transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
       >
         <div className="relative w-full min-w-0 overflow-x-hidden">
           <Header />
