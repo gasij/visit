@@ -8,6 +8,7 @@ import StudioLeaders from './components/StudioLeaders';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
 import ArticleList from './components/ArticleList';
+import SiteCostCalculator from './components/SiteCostCalculator';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import LoadingScreen from './components/LoadingScreen';
@@ -80,6 +81,7 @@ const App: React.FC = () => {
                 disableAnimations={false}
               />
             <StudioLeaders />
+            <SiteCostCalculator />
             <ContactForm />
           </main>
           <Footer />

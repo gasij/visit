@@ -6,6 +6,7 @@ const navLinks = [
   { href: '#magicbento', label: 'Способности' },
   { href: '#projects', label: 'Проекты' },
   { href: '#articles', label: 'Статьи' },
+  { href: '#calculator', label: 'Стоимость' },
   { href: '#contact', label: 'Контакты' },
 ];
 

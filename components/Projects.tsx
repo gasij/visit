@@ -5,6 +5,10 @@ import { Github, ArrowUpRight } from 'lucide-react';
 const techTagClass =
   'font-mono text-[11px] sm:text-xs px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 text-zinc-200 bg-zinc-950/35 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-md transition-all duration-200 hover:border-white/15 hover:bg-zinc-900/45 hover:text-white';
 
+/** Стеклянная панель под описание проекта (как в шапке / тегах) */
+const projectCopyGlass =
+  'max-w-md rounded-2xl sm:rounded-3xl border border-white/[0.12] bg-zinc-950/45 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl backdrop-saturate-150 px-5 py-5 sm:px-7 sm:py-6';
+
 const Projects: React.FC = () => {
   return (
     <section id="projects" className="py-8 sm:py-12 md:py-14 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full min-w-0 overflow-x-hidden">
@@ -19,11 +23,15 @@ const Projects: React.FC = () => {
               </span>
             ))}
           </div>
-          <p className="text-zinc-400 leading-relaxed text-sm sm:text-lg max-w-md">
-            <span className="text-white italic">GOStat</span> — современное микросервисное приложение, предназначенное для обработки <span className="text-white">аутентификации HTTP-запросов</span> и статистики с высокой точностью.
-            <br /><br />
-            Этот проект состоит из нескольких ключевых микросервисов, каждый из которых вносит вклад в общую функциональность и производительность.
-          </p>
+          <div className={projectCopyGlass}>
+            <p className="text-zinc-300 leading-relaxed text-sm sm:text-lg">
+              <span className="text-white italic">GOStat</span> — современное микросервисное приложение, предназначенное для обработки{' '}
+              <span className="text-white">аутентификации HTTP-запросов</span> и статистики с высокой точностью.
+              <br />
+              <br />
+              Этот проект состоит из нескольких ключевых микросервисов, каждый из которых вносит вклад в общую функциональность и производительность.
+            </p>
+          </div>
           <div className="flex gap-4">
             <button className="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center hover:bg-zinc-800 transition-colors">
               <Github size={20} />
@@ -66,11 +74,16 @@ const Projects: React.FC = () => {
               </span>
             ))}
           </div>
-          <p className="text-zinc-400 leading-relaxed text-sm sm:text-lg max-w-md">
-            Kana Master — это <span className="text-white">iOS приложение</span>, предназначенное для <span className="text-white">изучения Катаканы и Хираганы</span>. Оно включает различные тесты и практические упражнения.
-            <br /><br />
-            Приложение также предлагает <span className="text-white italic">аудиотренировки</span> для правильного произношения и демонстрирует, как правильно <span className="text-white">рисовать каждый символ</span>.
-          </p>
+          <div className={projectCopyGlass}>
+            <p className="text-zinc-300 leading-relaxed text-sm sm:text-lg">
+              Kana Master — это <span className="text-white">iOS приложение</span>, предназначенное для{' '}
+              <span className="text-white">изучения Катаканы и Хираганы</span>. Оно включает различные тесты и практические упражнения.
+              <br />
+              <br />
+              Приложение также предлагает <span className="text-white italic">аудиотренировки</span> для правильного произношения и демонстрирует, как
+              правильно <span className="text-white">рисовать каждый символ</span>.
+            </p>
+          </div>
           <div className="flex gap-4">
              <button className="w-14 h-14 rounded-full bg-white text-black flex items-center justify-center shadow-xl hover:scale-110 transition-transform">
                <ArrowUpRight size={24} />

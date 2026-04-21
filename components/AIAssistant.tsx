@@ -2,7 +2,11 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { MessageSquare, X, Send, Sparkles } from 'lucide-react';
 
 const PANEL_TITLE = 'Ассистент webfoundry';
-const DURATION_MS = 320;
+/** Оверлей чуть короче панели — ощущение глубины */
+const OVERLAY_DURATION_MS = 420;
+const PANEL_DURATION_MS = 560;
+const PANEL_EASE = 'cubic-bezier(0.16, 1, 0.3, 1)';
+const OVERLAY_EASE = 'cubic-bezier(0.22, 1, 0.36, 1)';
 
 const AIAssistant: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -53,7 +57,7 @@ const AIAssistant: React.FC = () => {
       setMounted(false);
       setOpen(false);
       closeTimerRef.current = null;
-    }, DURATION_MS);
+    }, PANEL_DURATION_MS);
   }, [reduceMotion]);
 
   useEffect(() => {
@@ -86,19 +90,42 @@ const AIAssistant: React.FC = () => {
     else openPanel();
   };
 
-  const transitionClass = reduceMotion
+  const overlayTransition = reduceMotion
     ? ''
-    : 'transition-[opacity,transform,backdrop-filter] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]';
+    : 'transition-[opacity,backdrop-filter] duration-[var(--ai-overlay-dur,420ms)] ease-[cubic-bezier(0.22,1,0.36,1)]';
+
+  const panelTransition = reduceMotion
+    ? ''
+    : 'transform-gpu transition-[transform,opacity,box-shadow] duration-[var(--ai-panel-dur,560ms)] ease-[cubic-bezier(0.16,1,0.3,1)]';
+
+  const innerStagger = reduceMotion
+    ? ''
+    : 'transition-[transform,opacity] duration-[var(--ai-inner-dur)] ease-[cubic-bezier(0.16,1,0.3,1)]';
+
+  const overlayStyle: React.CSSProperties | undefined = reduceMotion
+    ? undefined
+    : {
+        ['--ai-overlay-dur' as string]: `${OVERLAY_DURATION_MS}ms`,
+        transitionTimingFunction: OVERLAY_EASE,
+      };
+
+  const panelStyle: React.CSSProperties | undefined = reduceMotion
+    ? undefined
+    : {
+        ['--ai-panel-dur' as string]: `${PANEL_DURATION_MS}ms`,
+        ['--ai-inner-dur' as string]: `${Math.round(PANEL_DURATION_MS * 0.72)}ms`,
+        transitionTimingFunction: PANEL_EASE,
+      };
 
   return (
     <>
       {mounted && (
         <button
           type="button"
-          className={`fixed inset-0 z-[55] bg-black/50 md:bg-black/30 ${transitionClass} ${
-            entered ? 'opacity-100 backdrop-blur-[2px]' : 'opacity-0 backdrop-blur-none'
+          className={`fixed inset-0 z-[55] bg-black/50 md:bg-black/30 ${overlayTransition} ${
+            entered ? 'opacity-100 backdrop-blur-sm md:backdrop-blur-md' : 'opacity-0 backdrop-blur-none'
           }`}
-          style={reduceMotion ? undefined : { transitionDuration: `${DURATION_MS}ms` }}
+          style={overlayStyle}
           aria-label="Закрыть панель ассистента"
           onClick={closePanel}
         />
@@ -111,14 +138,19 @@ const AIAssistant: React.FC = () => {
             role="dialog"
             aria-modal="true"
             aria-labelledby="ai-assistant-title"
-            className={`pointer-events-auto flex max-h-[min(72vh,560px)] w-full min-h-0 origin-bottom-right flex-col overflow-hidden rounded-2xl border border-white/15 bg-zinc-950/92 shadow-2xl shadow-violet-950/20 backdrop-blur-xl md:rounded-2xl ${transitionClass} ${
+            className={`pointer-events-auto flex max-h-[min(72vh,560px)] w-full min-h-0 origin-bottom-right flex-col overflow-hidden rounded-2xl border border-white/15 bg-zinc-950/92 shadow-2xl shadow-violet-950/20 backdrop-blur-xl md:rounded-2xl ${panelTransition} ${
               entered
-                ? 'translate-y-0 scale-100 opacity-100'
-                : 'translate-y-3 scale-[0.96] opacity-0 md:translate-y-2 md:scale-[0.98]'
+                ? 'translate-x-0 translate-y-0 scale-100 opacity-100 shadow-[0_24px_80px_-12px_rgba(0,0,0,0.55),0_0_0_1px_rgba(255,255,255,0.06),0_0_40px_-8px_rgba(139,92,246,0.18)]'
+                : 'translate-x-3 translate-y-7 scale-[0.9] opacity-0 shadow-[0_8px_24px_-8px_rgba(0,0,0,0.25)] md:translate-x-2 md:translate-y-6'
             }`}
-            style={reduceMotion ? undefined : { transitionDuration: `${DURATION_MS}ms` }}
+            style={panelStyle}
           >
-            <div className="flex shrink-0 items-center justify-between gap-3 border-b border-white/10 px-4 py-3">
+            <div
+              className={`flex shrink-0 items-center justify-between gap-3 border-b border-white/10 px-4 py-3 ${innerStagger} ${
+                entered ? 'translate-y-0 opacity-100' : 'translate-y-1.5 opacity-0'
+              }`}
+              style={reduceMotion ? undefined : { transitionDelay: entered ? '60ms' : '0ms' }}
+            >
               <div className="flex min-w-0 items-center gap-2">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500/30 to-fuchsia-500/20 text-violet-200">
                   <Sparkles size={18} strokeWidth={2} aria-hidden />
@@ -140,7 +172,12 @@ const AIAssistant: React.FC = () => {
               </button>
             </div>
 
-            <div className="min-h-[200px] flex-1 overflow-y-auto px-4 py-4">
+            <div
+              className={`min-h-[200px] flex-1 overflow-y-auto px-4 py-4 ${innerStagger} ${
+                entered ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
+              }`}
+              style={reduceMotion ? undefined : { transitionDelay: entered ? '100ms' : '0ms' }}
+            >
               <div className="rounded-xl border border-dashed border-zinc-700/80 bg-zinc-900/50 px-4 py-8 text-center">
                 <p className="text-sm leading-relaxed text-zinc-400">
                   Здесь будет чат с ассистентом: ответы о студии, услугах и проектах. Подключите backend или виджет
@@ -149,7 +186,13 @@ const AIAssistant: React.FC = () => {
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="shrink-0 border-t border-white/10 p-3">
+            <form
+              onSubmit={handleSubmit}
+              className={`shrink-0 border-t border-white/10 p-3 ${innerStagger} ${
+                entered ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
+              }`}
+              style={reduceMotion ? undefined : { transitionDelay: entered ? '140ms' : '0ms' }}
+            >
               <div className="flex gap-2 rounded-xl border border-white/10 bg-black/40 p-1.5 focus-within:border-violet-500/40">
                 <label htmlFor="ai-assistant-input" className="sr-only">
                   Сообщение ассистенту
@@ -179,7 +222,7 @@ const AIAssistant: React.FC = () => {
         <button
           type="button"
           onClick={toggleFab}
-          className={`pointer-events-auto ml-auto flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-zinc-950/85 text-white shadow-lg backdrop-blur-xl transition-[transform,box-shadow] duration-300 ease-out hover:border-violet-400/50 hover:bg-zinc-900 hover:shadow-violet-500/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60 md:h-[3.75rem] md:w-[3.75rem] ${
+          className={`pointer-events-auto ml-auto flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-zinc-950/85 text-white shadow-lg backdrop-blur-xl transition-[transform,box-shadow,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-violet-400/50 hover:bg-zinc-900 hover:shadow-violet-500/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60 md:h-[3.75rem] md:w-[3.75rem] ${
             open ? 'scale-95' : 'scale-100 hover:scale-105 active:scale-95'
           }`}
           aria-expanded={open}
