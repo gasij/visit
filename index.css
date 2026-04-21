@@ -27,13 +27,21 @@ body {
   overflow-x: hidden;
 }
 
-/* Отдельный композитный слой для fixed WebGL — меньше мерцания при скролле на iOS/Android */
+/* Фон вне overflow-предка + dvh: на iOS не «уезжает» при скролле с адресной строкой */
 .app-fixed-webgl-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: -webkit-fill-available;
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   isolation: isolate;
-  /* Не перехватывать touch/scroll — контент выше по z-index */
   pointer-events: none;
 }
 
