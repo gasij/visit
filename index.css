@@ -33,6 +33,8 @@ body {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   isolation: isolate;
+  /* Не перехватывать touch/scroll — контент выше по z-index */
+  pointer-events: none;
 }
 
 .font-mono {

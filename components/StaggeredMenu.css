@@ -156,8 +156,13 @@
   padding: clamp(4.5rem, 14vw, 6em) clamp(1rem, 4vw, 2em) clamp(1.25rem, 4vw, 2em);
   overflow-y: auto;
   z-index: 10;
-  pointer-events: auto;
+  /* Закрыто: панель на всю ширину на мобилке — без none блокирует скролл страницы */
+  pointer-events: none;
   opacity: 0;
+}
+
+.staggered-menu-wrapper[data-open] .staggered-menu-panel {
+  pointer-events: auto;
 }
 
 [data-position='left'] .staggered-menu-panel {
