@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { MessageSquare, X, Send, Sparkles } from 'lucide-react';
 
-const PANEL_TITLE = 'Ассистент webfoundry';
+const PANEL_TITLE = 'Ассистент AQUM';
 /** Оверлей чуть короче панели — ощущение глубины */
 const OVERLAY_DURATION_MS = 420;
 const PANEL_DURATION_MS = 560;

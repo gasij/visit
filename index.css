@@ -73,6 +73,115 @@ body {
   }
 }
 
+.aqum-intro-gate {
+  opacity: 1;
+}
+
+.aqum-intro-gate--exit {
+  animation: aqum-gate-pass 850ms cubic-bezier(0.64, 0, 1, 1) forwards;
+}
+
+.aqum-intro-word {
+  transform: translateZ(0) scale(1);
+  opacity: 1;
+  filter: blur(0);
+  will-change: transform, opacity, filter;
+}
+
+.aqum-intro-word--exit {
+  animation: aqum-word-pass 850ms cubic-bezier(0.64, 0, 1, 1) forwards;
+}
+
+.aqum-scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: max(2rem, env(safe-area-inset-bottom));
+  display: flex;
+  width: 3.25rem;
+  height: 5.75rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.24);
+  box-shadow:
+    0 0 26px rgba(255, 255, 255, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transform: translateX(-50%);
+  opacity: 0.95;
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+  backdrop-filter: blur(10px);
+}
+
+.aqum-scroll-cue__arrow {
+  position: absolute;
+  top: 50%;
+  width: 0.72rem;
+  height: 0.72rem;
+  border-right: 2px solid rgba(255, 255, 255, 0.9);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.9);
+  transform: translateY(-50%) rotate(45deg);
+  animation: aqum-scroll-arrow 1400ms cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.aqum-scroll-cue--exit {
+  opacity: 0;
+  transform: translate(-50%, 16px);
+}
+
+@keyframes aqum-scroll-arrow {
+  0%,
+  100% {
+    opacity: 0.36;
+    transform: translateY(calc(-50% - 6px)) rotate(45deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(calc(-50% + 7px)) rotate(45deg);
+  }
+}
+
+@keyframes aqum-word-pass {
+  0% {
+    transform: translateZ(0) scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+  34% {
+    transform: translateZ(0) scale(3.2);
+    opacity: 1;
+    filter: blur(0);
+  }
+  68% {
+    transform: translateZ(0) scale(38);
+    opacity: 0.72;
+    filter: blur(2px);
+  }
+  100% {
+    transform: translateZ(0) scale(140);
+    opacity: 0;
+    filter: blur(12px);
+  }
+}
+
+@keyframes aqum-gate-pass {
+  0%,
+  18% {
+    background-color: #000;
+    opacity: 1;
+  }
+  64% {
+    background-color: rgba(0, 0, 0, 0.12);
+    opacity: 1;
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0);
+    opacity: 0;
+  }
+}
+
 /* Внутренние скроллы (панель ИИ и т.п.) — тонкая полоса, не на уровне всей страницы */
 .overflow-y-auto,
 .overflow-y-scroll {

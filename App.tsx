@@ -16,7 +16,8 @@ import ColorBends from './components/ColorBends';
 import AIAssistant from './components/AIAssistant';
 
 const App: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [introVisible, setIntroVisible] = useState(true);
+  const [mainEntered, setMainEntered] = useState(false);
   const [liteBg, setLiteBg] = useState(false);
 
   useEffect(() => {
@@ -29,10 +30,17 @@ const App: React.FC = () => {
 
   return (
     <>
-      {isLoading && <LoadingScreen onFinished={() => setIsLoading(false)} />}
+      {introVisible && (
+        <LoadingScreen
+          onExitStart={() => setMainEntered(true)}
+          onFinished={() => setIntroVisible(false)}
+        />
+      )}
       {/* Вне overflow-x-hidden: иначе на iOS fixed-фон «едет» вместе со скроллом предка */}
       <div
-        className={`app-fixed-webgl-bg transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+        className={`app-fixed-webgl-bg transition-opacity delay-[120ms] duration-[520ms] ease-out ${
+          mainEntered ? 'opacity-100' : 'opacity-0'
+        }`}
         aria-hidden
       >
         {liteBg ? (
@@ -62,7 +70,9 @@ const App: React.FC = () => {
       </div>
 
       <div
-        className={`relative z-10 min-h-screen text-white selection:bg-white selection:text-black overflow-x-hidden transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+        className={`relative z-10 min-h-screen text-white selection:bg-white selection:text-black overflow-x-hidden transition-[opacity,transform,filter] delay-[120ms] duration-[520ms] ease-out ${
+          mainEntered ? 'translate-y-0 scale-100 opacity-100 blur-0' : 'translate-y-4 scale-[0.992] opacity-0 blur-sm'
+        }`}
       >
         <div className="relative w-full min-w-0 overflow-x-hidden">
           <Header />

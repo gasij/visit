@@ -1,11 +1,23 @@
 import React, { useMemo, useState, useCallback } from 'react';
 import { Calculator, Sparkles } from 'lucide-react';
 import Reveal from './Reveal';
+import SectionPath from './SectionPath';
 import {
   CONTACT_CALC_PREFILL_KEY,
   CONTACT_CALC_PREFILL_EVENT,
   type CalcPrefillV1,
 } from '@/lib/contactCalcPrefill';
+import {
+  calculateSiteCost,
+  DESIGN,
+  MOTION,
+  SITE_OPTIONS,
+  SPEED,
+  type DesignTier,
+  type MotionTier,
+  type SiteKind,
+  type SpeedTier,
+} from '@/lib/siteCostCalculator';
 
 const panelGlass =
   'rounded-2xl sm:rounded-3xl border border-white/[0.12] bg-zinc-950/45 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl backdrop-saturate-150';
@@ -14,42 +26,6 @@ const labelClass = 'block text-xs font-mono uppercase tracking-widest text-zinc-
 
 const fmt = (n: number) =>
   new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 }).format(Math.round(n));
-
-const roundNice = (n: number) => Math.round(n / 10_000) * 10_000;
-
-type SiteKind = 'landing' | 'corporate' | 'catalog' | 'portal' | 'ecommerce';
-
-const SITE_OPTIONS: { id: SiteKind; title: string; hint: string; base: number; includedPages: number }[] = [
-  { id: 'landing', title: 'Лендинг', hint: '1 экран, заявки', base: 55_000, includedPages: 1 },
-  { id: 'corporate', title: 'Корпоративный', hint: 'услуги, команда, блог', base: 95_000, includedPages: 6 },
-  { id: 'catalog', title: 'Каталог', hint: 'фильтры, карточки', base: 135_000, includedPages: 8 },
-  { id: 'portal', title: 'Сервис / ЛК', hint: 'роли, кабинеты', base: 195_000, includedPages: 10 },
-  { id: 'ecommerce', title: 'Интернет-магазин', hint: 'корзина, оплата', base: 265_000, includedPages: 12 },
-];
-
-const EXTRA_PAGE = 7_500;
-
-type DesignTier = 'template' | 'custom' | 'premium';
-const DESIGN: { id: DesignTier; label: string; factor: number }[] = [
-  { id: 'template', label: 'На базе готовой UI-системы', factor: 1 },
-  { id: 'custom', label: 'Индивидуальный дизайн', factor: 1.32 },
-  { id: 'premium', label: 'Премиум + микровзаимодействия', factor: 1.65 },
-];
-
-type MotionTier = 'none' | 'standard' | 'rich' | 'webgl';
-const MOTION: { id: MotionTier; label: string; factor: number }[] = [
-  { id: 'none', label: 'Минимум', factor: 1 },
-  { id: 'standard', label: 'Стандартные анимации', factor: 1.08 },
-  { id: 'rich', label: 'Сложный UI / скролл-стори', factor: 1.2 },
-  { id: 'webgl', label: '3D / WebGL / тяжёлая графика', factor: 1.38 },
-];
-
-type SpeedTier = 'm1' | 'm1_2' | 'm2';
-const SPEED: { id: SpeedTier; label: string; factor: number }[] = [
-  { id: 'm1', label: 'до 1 мес.', factor: 1.08 },
-  { id: 'm1_2', label: '1–2 мес.', factor: 1 },
-  { id: 'm2', label: '2 мес.', factor: 0.96 },
-];
 
 const SiteCostCalculator: React.FC = () => {
   const [kind, setKind] = useState<SiteKind>('corporate');
@@ -62,26 +38,10 @@ const SiteCostCalculator: React.FC = () => {
   const [crm, setCrm] = useState(false);
   const [i18n, setI18n] = useState(false);
 
-  const estimate = useMemo(() => {
-    const opt = SITE_OPTIONS.find((o) => o.id === kind)!;
-    let subtotal = opt.base;
-    const extra = Math.max(0, pages - opt.includedPages);
-    subtotal += extra * EXTRA_PAGE;
-
-    const d = DESIGN.find((x) => x.id === design)!.factor;
-    const m = MOTION.find((x) => x.id === motion)!.factor;
-    const s = SPEED.find((x) => x.id === speed)!.factor;
-
-    subtotal *= d * m * s;
-    if (cms) subtotal += 38_000;
-    if (payments) subtotal += 48_000;
-    if (crm) subtotal += 26_000;
-    if (i18n) subtotal *= 1.22;
-
-    const low = roundNice(subtotal * 0.88);
-    const high = roundNice(subtotal * 1.12);
-    return { low, high, subtotal: roundNice(subtotal) };
-  }, [kind, pages, design, motion, speed, cms, payments, crm, i18n]);
+  const estimate = useMemo(
+    () => calculateSiteCost({ kind, pages, design, motion, speed, cms, payments, crm, i18n }),
+    [kind, pages, design, motion, speed, cms, payments, crm, i18n]
+  );
 
   const goDiscussWithParams = useCallback(() => {
     const opt = SITE_OPTIONS.find((o) => o.id === kind)!;
@@ -124,7 +84,7 @@ const SiteCostCalculator: React.FC = () => {
             <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-violet-200">
               <Calculator size={20} aria-hidden />
             </span>
-            <span className="font-mono text-zinc-400 drop-shadow-[0_1px_12px_rgba(0,0,0,0.85)]">... /Ориентир бюджета ...</span>
+            <SectionPath items={['стоимость']} />
           </div>
         </Reveal>
         <Reveal delay={0.12}>

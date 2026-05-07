@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Github, ArrowUpRight } from 'lucide-react';
+import SectionPath from './SectionPath';
 
 const techTagClass =
   'font-mono text-[11px] sm:text-xs px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 text-zinc-200 bg-zinc-950/35 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-md transition-all duration-200 hover:border-white/15 hover:bg-zinc-900/45 hover:text-white';
@@ -12,6 +13,7 @@ const projectCopyGlass =
 const Projects: React.FC = () => {
   return (
     <section id="projects" className="py-8 sm:py-12 md:py-14 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full min-w-0 overflow-x-hidden">
+      <SectionPath items={['проекты']} className="mb-6 sm:mb-8" />
       {/* Project: Gostat */}
       <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center mb-14 sm:mb-22 md:mb-28 relative">
         <div className="order-2 lg:order-1 space-y-5 sm:space-y-8 min-w-0">

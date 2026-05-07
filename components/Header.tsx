@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import StaggeredMenu from './StaggeredMenu';
 
 const navLinks = [
-  { href: '#leaders', label: 'Команда' },
+  { href: '#team', label: 'Команда' },
   { href: '#magicbento', label: 'Способности' },
   { href: '#projects', label: 'Проекты' },
   { href: '#articles', label: 'Статьи' },
@@ -92,14 +92,9 @@ const Header: React.FC = () => {
             ].join(' ')}
           >
             <a href="#" className="flex items-center shrink-0 z-10 min-w-0 pl-1 sm:pl-2 md:pl-3">
-              <img
-                src="/Mask%20group.svg"
-                alt="webfoundry"
-                className="h-12 w-auto md:h-14 lg:h-16"
-                width={672}
-                height={250}
-                decoding="async"
-              />
+              <span className="text-2xl font-black tracking-tighter text-white md:text-3xl lg:text-4xl">
+                AQUM
+              </span>
             </a>
 
             <nav className="flex gap-8 lg:gap-12 text-sm uppercase tracking-widest text-zinc-400">

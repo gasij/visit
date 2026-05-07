@@ -1,7 +1,7 @@
-export const CONTACT_CALC_PREFILL_KEY = 'webfoundry:calc-prefill-v1';
+export const CONTACT_CALC_PREFILL_KEY = 'aqum:calc-prefill-v1';
 
 /** Событие после записи в sessionStorage — форма связи подставляет текст */
-export const CONTACT_CALC_PREFILL_EVENT = 'webfoundry:contact-prefill';
+export const CONTACT_CALC_PREFILL_EVENT = 'aqum:contact-prefill';
 
 export type CalcPrefillV1 = {
   kindTitle: string;

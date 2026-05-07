@@ -1,5 +1,6 @@
 import { useRef, useEffect, useCallback, useState } from 'react';
 import { gsap } from 'gsap';
+import SectionPath from './SectionPath';
 import './MagicBento.css';
 
 const DEFAULT_PARTICLE_COUNT = 12;
@@ -13,7 +14,7 @@ const cardData = [
     label: 'Мы',
     title: 'Команда',
     description:
-      'webfoundry: от идеи и MVP до продакшена. Один контакт по проекту, сроки и объём работ прозрачны.',
+      'AQUM: от идеи и MVP до продакшена. Один контакт по проекту, сроки и объём работ прозрачны.',
   },
   {
     color: '#060010',
@@ -318,45 +319,51 @@ export default function MagicBento({
       {enableSpotlight && (
         <GlobalSpotlight gridRef={gridRef} enabled={enableSpotlight} disableAnimations={off} spotlightRadius={spotlightRadius} glowColor={glowColor} />
       )}
-      <div id="magicbento" className="card-grid bento-section" ref={gridRef}>
-        {cardData.map((card, i) => {
-          const cls = [
-            'magic-bento-card',
-            `magic-bento-card--shape-${i % 6}`,
-            textAutoHide ? 'magic-bento-card--text-autohide' : '',
-            enableBorderGlow ? 'magic-bento-card--border-glow' : '',
-          ]
-            .filter(Boolean)
-            .join(' ');
-          const sheens = ['148deg', '212deg', '328deg', '42deg', '268deg', '188deg'] as const;
-          const st = {
-            backgroundColor: card.color,
-            '--glow-color': glowColor,
-            '--bento-sheen': sheens[i % sheens.length],
-          } as React.CSSProperties;
-          return (
-            <ParticleCard
-              key={i}
-              className={cls}
-              style={st}
-              particleCount={enableStars ? particleCount : 0}
-              glowColor={glowColor}
-              enableTilt={enableTilt}
-              clickEffect={clickEffect}
-              enableMagnetism={enableMagnetism}
-              disableAnimations={off}
-            >
-              <div className="magic-bento-card__header">
-                <div className="magic-bento-card__label">{card.label}</div>
-              </div>
-              <div className="magic-bento-card__content">
-                <h2 className="magic-bento-card__title">{card.title}</h2>
-                <p className="magic-bento-card__description">{card.description}</p>
-              </div>
-            </ParticleCard>
-          );
-        })}
-      </div>
+      <section
+        id="magicbento"
+        className="bento-section py-10 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full min-w-0"
+      >
+        <SectionPath items={['способности']} className="mb-6 sm:mb-8" />
+        <div className="card-grid" ref={gridRef}>
+          {cardData.map((card, i) => {
+            const cls = [
+              'magic-bento-card',
+              `magic-bento-card--shape-${i % 6}`,
+              textAutoHide ? 'magic-bento-card--text-autohide' : '',
+              enableBorderGlow ? 'magic-bento-card--border-glow' : '',
+            ]
+              .filter(Boolean)
+              .join(' ');
+            const sheens = ['148deg', '212deg', '328deg', '42deg', '268deg', '188deg'] as const;
+            const st = {
+              backgroundColor: card.color,
+              '--glow-color': glowColor,
+              '--bento-sheen': sheens[i % sheens.length],
+            } as React.CSSProperties;
+            return (
+              <ParticleCard
+                key={i}
+                className={cls}
+                style={st}
+                particleCount={enableStars ? particleCount : 0}
+                glowColor={glowColor}
+                enableTilt={enableTilt}
+                clickEffect={clickEffect}
+                enableMagnetism={enableMagnetism}
+                disableAnimations={off}
+              >
+                <div className="magic-bento-card__header">
+                  <div className="magic-bento-card__label">{card.label}</div>
+                </div>
+                <div className="magic-bento-card__content">
+                  <h2 className="magic-bento-card__title">{card.title}</h2>
+                  <p className="magic-bento-card__description">{card.description}</p>
+                </div>
+              </ParticleCard>
+            );
+          })}
+        </div>
+      </section>
     </>
   );
 }

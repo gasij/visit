@@ -506,7 +506,7 @@ type ASCIITextProps = {
 };
 
 export default function ASCIIText({
-  text = 'webfoundry',
+  text = 'AQUM',
   asciiFontSize = 8,
   textFontSize = 200,
   textColor = '#fdf9f3',

@@ -435,14 +435,9 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         aria-label="На главную"
         onClick={() => closeMenu()}
       >
-        <img
-          src="/Mask%20group.svg"
-          alt="webfoundry"
-          className="sm-logo-img block h-12 w-auto sm:h-14"
-          width={392}
-          height={146}
-          decoding="async"
-        />
+        <span className="block text-2xl font-black tracking-tighter text-white sm:text-3xl">
+          AQUM
+        </span>
       </a>
       <button
         ref={toggleBtnRef}
@@ -502,14 +497,7 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 style={{ background: c }}
               >
                 {i === 2 ? (
-                  <img
-                    src="/Mask%20group.svg"
-                    alt=""
-                    className="sm-prelayer-logo"
-                    width={336}
-                    height={125}
-                    decoding="async"
-                  />
+                  <span className="sm-prelayer-logo">AQUM</span>
                 ) : null}
               </div>
             ));

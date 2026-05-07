@@ -2,6 +2,7 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import Reveal from './Reveal';
+import SectionPath from './SectionPath';
 
 const About: React.FC = () => {
   return (
@@ -10,7 +11,7 @@ const About: React.FC = () => {
         <div className="space-y-8">
           <Reveal>
             <div className="flex items-center gap-4">
-              <span className="font-mono text-zinc-500">... /О себе ...</span>
+              <SectionPath items={['о себе']} />
             </div>
           </Reveal>
           

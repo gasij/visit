@@ -1,6 +1,7 @@
 import React from 'react';
 import ProfileCard from './ProfileCard';
 import Reveal from './Reveal';
+import SectionPath from './SectionPath';
 
 const ICON_PATTERN =
   'https://www.transparenttextures.com/patterns/carbon-fibre.png';
@@ -55,9 +56,12 @@ const leaders = [
 const StudioLeaders: React.FC = () => {
   return (
     <section
-      id="leaders"
+      id="team"
       className="py-10 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 max-w-[1400px] mx-auto w-full min-w-0 relative z-10"
     >
+      <Reveal delay={0.04}>
+        <SectionPath items={['команда']} className="mb-4 text-center" />
+      </Reveal>
       <Reveal delay={0.08}>
         <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tighter text-center mb-8 md:mb-10">
           Команда

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Loader2, Send } from 'lucide-react';
 import Reveal from './Reveal';
+import SectionPath from './SectionPath';
 import {
   CONTACT_CALC_PREFILL_KEY,
   CONTACT_CALC_PREFILL_EVENT,
@@ -9,7 +10,7 @@ import {
 } from '@/lib/contactCalcPrefill';
 
 /** Замените на свой email для отправки через почтовый клиент */
-const CONTACT_MAIL_TO = 'hello@webfoundry.com';
+const CONTACT_MAIL_TO = 'hello@aqum.com';
 
 /** Как у блоков описания в Projects: стеклянная панель */
 const introGlass =
@@ -60,7 +61,7 @@ const ContactForm: React.FC = () => {
     if (!isValid) return;
 
     setStatus('sending');
-    const subject = encodeURIComponent(`Сайт webfoundry — ${name.trim()}`);
+    const subject = encodeURIComponent(`Сайт AQUM — ${name.trim()}`);
     const body = encodeURIComponent(
       `${message.trim()}\n\n—\n${name.trim()}\n${email.trim()}`
     );
@@ -83,7 +84,7 @@ const ContactForm: React.FC = () => {
         <div className="space-y-6 min-w-0">
           <Reveal>
             <div className="flex items-center gap-4">
-              <span className="font-mono text-zinc-400 drop-shadow-[0_1px_12px_rgba(0,0,0,0.85)]">... /Связь ...</span>
+              <SectionPath items={['связь']} />
             </div>
           </Reveal>
           <Reveal delay={0.15}>

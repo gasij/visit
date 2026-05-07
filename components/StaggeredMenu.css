@@ -205,10 +205,13 @@
 }
 
 .sm-prelayer-logo {
-  width: min(96%, 400px);
-  height: auto;
-  max-height: min(52vh, 280px);
-  object-fit: contain;
+  display: block;
+  max-width: min(96%, 460px);
+  font-size: clamp(4.5rem, 18vw, 10rem);
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: 0;
+  color: #fff;
   opacity: 0.55;
   pointer-events: none;
 }

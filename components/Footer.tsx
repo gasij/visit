@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Github, Linkedin, Send, Facebook, Instagram, Mail } from 'lucide-react';
+import SectionPath from './SectionPath';
 
 const Footer: React.FC = () => {
   return (
@@ -9,8 +10,9 @@ const Footer: React.FC = () => {
         <div className="h-px w-full bg-zinc-800" aria-hidden />
         <div className="grid md:grid-cols-2 gap-8 items-end py-8 sm:py-10">
           <div className="min-w-0 space-y-4">
+            <SectionPath items={['контакты']} />
             <h2 className="max-w-full text-[clamp(1.75rem,7.2vw,6.5rem)] sm:text-[8vw] md:text-[6.5rem] font-black leading-[0.88] sm:leading-[0.82] tracking-tighter break-words">
-              webfoundry
+              AQUM
             </h2>
             <div className="text-zinc-500 uppercase tracking-widest text-xs font-mono ml-1 sm:ml-4">
               Студия веб-разработки
@@ -20,7 +22,7 @@ const Footer: React.FC = () => {
           <div className="md:pl-20">
              <nav className="flex flex-wrap gap-x-8 sm:gap-x-12 gap-y-6 text-sm uppercase tracking-widest">
                 <a href="#" className="hover:text-white transition-colors">Главная</a>
-                <a href="#leaders" className="hover:text-white transition-colors">Команда</a>
+                <a href="#team" className="hover:text-white transition-colors">Команда</a>
                 <a href="#about" className="hover:text-white transition-colors">О себе</a>
                 <a href="#projects" className="hover:text-white transition-colors">Проекты</a>
                 <a href="#articles" className="hover:text-white transition-colors">Статьи</a>

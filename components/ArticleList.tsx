@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { ArrowRight, ArrowDown, X } from 'lucide-react';
+import SectionPath from './SectionPath';
 
 type Article = {
   id: number;
@@ -312,6 +313,7 @@ const ArticleList: React.FC = () => {
   return (
     <section id="articles" className="py-10 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full min-w-0 overflow-x-hidden">
       <ArticleModal article={openArticle} onClose={closeModal} />
+      <SectionPath items={['статьи']} className="mb-5 sm:mb-7" />
 
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-5 sm:mb-7 overflow-hidden">
         <div className={`max-w-xl order-2 sm:order-1 ${articleIntroPanelClass}`}>
