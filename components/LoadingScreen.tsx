@@ -18,7 +18,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFinished, onExitStart }
     setExit(true);
     onExitStart();
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    window.setTimeout(onFinished, 850);
+    window.setTimeout(onFinished, 760);
   }, [onExitStart, onFinished]);
 
   useEffect(() => {

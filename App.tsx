@@ -38,7 +38,7 @@ const App: React.FC = () => {
       )}
       {/* Вне overflow-x-hidden: иначе на iOS fixed-фон «едет» вместе со скроллом предка */}
       <div
-        className={`app-fixed-webgl-bg transition-opacity delay-[120ms] duration-[520ms] ease-out ${
+        className={`app-fixed-webgl-bg transition-opacity delay-[140ms] duration-[520ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
           mainEntered ? 'opacity-100' : 'opacity-0'
         }`}
         aria-hidden
@@ -70,8 +70,8 @@ const App: React.FC = () => {
       </div>
 
       <div
-        className={`relative z-10 min-h-screen text-white selection:bg-white selection:text-black overflow-x-hidden transition-[opacity,transform,filter] delay-[120ms] duration-[520ms] ease-out ${
-          mainEntered ? 'translate-y-0 scale-100 opacity-100 blur-0' : 'translate-y-4 scale-[0.992] opacity-0 blur-sm'
+        className={`relative z-10 min-h-screen text-white selection:bg-white selection:text-black overflow-x-hidden transition-[opacity,transform,filter] delay-[140ms] duration-[520ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          mainEntered ? 'translate-y-0 scale-100 opacity-100 blur-0' : 'translate-y-3 scale-[0.994] opacity-0 blur-[2px]'
         }`}
       >
         <div className="relative w-full min-w-0 overflow-x-hidden">

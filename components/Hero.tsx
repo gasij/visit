@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
     <section className="w-full min-w-0 pt-20 pb-8 px-4 sm:pt-28 sm:pb-12 sm:px-6 md:pt-36 md:pb-14 md:px-8 lg:px-12 xl:px-16">
       <div className="relative min-w-0 w-full">
         <Reveal defaultVisible width="100%">
-          <div className="mb-6 sm:mb-8 flex flex-col gap-1 sm:gap-2 min-w-0">
+          <div className="mx-auto mb-6 sm:mb-8 flex w-full max-w-[1500px] flex-col gap-1 sm:gap-2 min-w-0">
             <div style={{ position: 'relative', height: hMain }} className="w-full min-w-0 overflow-visible">
               <TextPressure
                 text="AQUM"
@@ -69,6 +69,7 @@ const Hero: React.FC = () => {
                     fontScale={0.7}
                     verticalAlign="center"
                     colorFollowsMotion
+                    evenLetterGap
                   />
                 </div>
                 <div
@@ -91,6 +92,7 @@ const Hero: React.FC = () => {
                     fontScale={0.7}
                     verticalAlign="center"
                     colorFollowsMotion
+                    evenLetterGap
                   />
                 </div>
               </div>

@@ -206,14 +206,15 @@
 
 .sm-prelayer-logo {
   display: block;
-  max-width: min(96%, 460px);
-  font-size: clamp(4.5rem, 18vw, 10rem);
+  max-width: calc(100% - 2rem);
+  font-size: clamp(3.5rem, 12vw, 7.5rem);
   font-weight: 900;
-  line-height: 0.85;
+  line-height: 1;
   letter-spacing: 0;
   color: #fff;
   opacity: 0.55;
   pointer-events: none;
+  white-space: nowrap;
 }
 
 .sm-panel-inner {

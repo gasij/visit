@@ -78,7 +78,7 @@ body {
 }
 
 .aqum-intro-gate--exit {
-  animation: aqum-gate-pass 850ms cubic-bezier(0.64, 0, 1, 1) forwards;
+  animation: aqum-gate-pass 760ms cubic-bezier(0.5, 0, 0.08, 1) forwards;
 }
 
 .aqum-intro-word {
@@ -89,7 +89,7 @@ body {
 }
 
 .aqum-intro-word--exit {
-  animation: aqum-word-pass 850ms cubic-bezier(0.64, 0, 1, 1) forwards;
+  animation: aqum-word-pass 760ms cubic-bezier(0.5, 0, 0.08, 1) forwards;
 }
 
 .aqum-scroll-cue {
@@ -149,18 +149,23 @@ body {
     opacity: 1;
     filter: blur(0);
   }
-  34% {
-    transform: translateZ(0) scale(3.2);
+  20% {
+    transform: translateZ(0) scale(2.1);
     opacity: 1;
     filter: blur(0);
   }
-  68% {
-    transform: translateZ(0) scale(38);
-    opacity: 0.72;
-    filter: blur(2px);
+  44% {
+    transform: translateZ(0) scale(9);
+    opacity: 1;
+    filter: blur(0);
+  }
+  72% {
+    transform: translateZ(0) scale(62);
+    opacity: 0.5;
+    filter: blur(3px);
   }
   100% {
-    transform: translateZ(0) scale(140);
+    transform: translateZ(0) scale(170);
     opacity: 0;
     filter: blur(12px);
   }
@@ -168,11 +173,11 @@ body {
 
 @keyframes aqum-gate-pass {
   0%,
-  18% {
+  16% {
     background-color: #000;
     opacity: 1;
   }
-  64% {
+  62% {
     background-color: rgba(0, 0, 0, 0.12);
     opacity: 1;
   }
