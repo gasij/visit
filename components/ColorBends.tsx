@@ -20,6 +20,9 @@ uniform vec2 uPointer;
 uniform float uMouseInfluence;
 uniform float uParallax;
 uniform float uNoise;
+uniform int uIterations;
+uniform float uIntensity;
+uniform float uBandWidth;
 varying vec2 vUv;
 
 void main() {
@@ -34,13 +37,18 @@ void main() {
   vec2 toward = (uPointer - rp);
   q += toward * uMouseInfluence * 0.2;
 
+    for (int j = 0; j < 5; j++) {
+      if (j >= uIterations - 1) break;
+      vec2 rr = sin(1.5 * (q.yx * uFrequency) + 2.0 * cos(q * uFrequency));
+      q += (rr - q) * 0.15;
+    }
+
     vec3 col = vec3(0.0);
     float a = 1.0;
 
     if (uColorCount > 0) {
       vec2 s = q;
       vec3 sumCol = vec3(0.0);
-      float sumW = 0.0;
       float cover = 0.0;
       for (int i = 0; i < MAX_COLORS; ++i) {
             if (i >= uColorCount) break;
@@ -54,13 +62,11 @@ void main() {
             vec2 warped = s + disp * gain;
             float m1 = length(warped + sin(5.0 * warped.y * uFrequency - 3.0 * t + float(i)) / 4.0);
             float m = mix(m0, m1, kMix);
-            float w = 1.0 - exp(-6.0 / exp(6.0 * m));
+            float w = 1.0 - exp(-uBandWidth / exp(uBandWidth * m));
             sumCol += uColors[i] * w;
-            sumW += w;
             cover = max(cover, w);
       }
-      col = sumCol / max(sumW, 1e-4);
-      col = clamp(col, 0.0, 1.0);
+      col = clamp(sumCol, 0.0, 1.0);
       a = uTransparent > 0 ? cover : 1.0;
     } else {
         vec2 s = q;
@@ -75,10 +81,12 @@ void main() {
             vec2 warped = s + disp * gain;
             float m1 = length(warped + sin(5.0 * warped.y * uFrequency - 3.0 * t + float(k)) / 4.0);
             float m = mix(m0, m1, kMix);
-            col[k] = 1.0 - exp(-6.0 / exp(6.0 * m));
+            col[k] = 1.0 - exp(-uBandWidth / exp(uBandWidth * m));
         }
         a = uTransparent > 0 ? max(max(col.r, col.g), col.b) : 1.0;
     }
+
+    col *= uIntensity;
 
     if (uNoise > 0.0001) {
       float n = fract(sin(dot(gl_FragCoord.xy + vec2(uTime), vec2(12.9898, 78.233))) * 43758.5453123);
@@ -113,6 +121,10 @@ export type ColorBendsProps = {
   mouseInfluence?: number;
   parallax?: number;
   noise?: number;
+  iterations?: number;
+  intensity?: number;
+  bandWidth?: number;
+  color?: string;
 };
 
 export default function ColorBends({
@@ -128,7 +140,10 @@ export default function ColorBends({
   warpStrength = 1,
   mouseInfluence = 1,
   parallax = 0.5,
-  noise = 0.1,
+  noise = 0.15,
+  iterations = 1,
+  intensity = 1.5,
+  bandWidth = 6,
 }: ColorBendsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
@@ -168,6 +183,9 @@ export default function ColorBends({
         uMouseInfluence: { value: mouseInfluence },
         uParallax: { value: parallax },
         uNoise: { value: noise },
+        uIterations: { value: iterations },
+        uIntensity: { value: intensity },
+        uBandWidth: { value: bandWidth },
       },
       premultipliedAlpha: true,
       transparent: true,
@@ -283,7 +301,7 @@ export default function ColorBends({
         container.removeChild(renderer.domElement);
       }
     };
-  }, [frequency, mouseInfluence, noise, parallax, scale, speed, transparent, warpStrength]);
+  }, [bandWidth, frequency, intensity, iterations, mouseInfluence, noise, parallax, scale, speed, transparent, warpStrength]);
 
   useEffect(() => {
     const material = materialRef.current;
@@ -299,6 +317,9 @@ export default function ColorBends({
     material.uniforms.uMouseInfluence.value = mouseInfluence;
     material.uniforms.uParallax.value = parallax;
     material.uniforms.uNoise.value = noise;
+    material.uniforms.uIterations.value = iterations;
+    material.uniforms.uIntensity.value = intensity;
+    material.uniforms.uBandWidth.value = bandWidth;
 
     const toVec3 = (hex: string) => {
       const h = hex.replace('#', '').trim();
@@ -329,6 +350,9 @@ export default function ColorBends({
     mouseInfluence,
     parallax,
     noise,
+    iterations,
+    intensity,
+    bandWidth,
     colors,
     transparent,
   ]);

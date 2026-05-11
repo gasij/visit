@@ -66,27 +66,43 @@ const App: React.FC = () => {
       >
         {!mainEntered ? null : liteBg ? (
           <div
-            className="absolute inset-0 bg-[#060010]"
+            className="absolute inset-0 bg-[#040407]"
             style={{
               backgroundImage:
-                'radial-gradient(ellipse 120% 80% at 20% 30%, rgba(82,39,255,0.35), transparent 50%), radial-gradient(ellipse 90% 70% at 80% 70%, rgba(255,159,252,0.2), transparent 45%), radial-gradient(ellipse 80% 60% at 50% 100%, rgba(177,158,239,0.15), transparent 40%)',
+                'radial-gradient(ellipse 120% 80% at 20% 30%, rgba(255,92,122,0.18), transparent 50%), radial-gradient(ellipse 90% 70% at 80% 70%, rgba(138,92,255,0.18), transparent 45%), radial-gradient(ellipse 80% 60% at 50% 100%, rgba(0,255,209,0.11), transparent 40%)',
             }}
           />
         ) : (
           <ColorBends
             className="absolute inset-0 h-full w-full"
-            colors={['#e85a78', '#7a62e8', '#35d4c4']}
-            rotation={0}
+            colors={['#ff5c7a', '#8a5cff', '#00ffd1']}
+            rotation={90}
             speed={0.2}
             scale={1}
             frequency={1}
-            warpStrength={0.92}
-            mouseInfluence={0.9}
+            warpStrength={1}
+            mouseInfluence={1}
+            noise={0.15}
             parallax={0.5}
-            noise={0.1}
+            iterations={1}
+            intensity={1.5}
+            bandWidth={6}
             transparent
             autoRotate={0}
+            color="#A855F7"
           />
+        )}
+        {mainEntered && (
+          <>
+            <div className="absolute inset-0 bg-black/55" />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  'radial-gradient(ellipse 90% 70% at 50% 42%, transparent 0%, rgba(0,0,0,0.28) 58%, rgba(0,0,0,0.72) 100%)',
+              }}
+            />
+          </>
         )}
       </div>
 
