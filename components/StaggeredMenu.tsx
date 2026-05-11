@@ -424,7 +424,7 @@ const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     <header
       className={
         glassHeader
-          ? 'staggered-menu-header staggered-menu-header--in-glass pointer-events-auto mx-auto max-w-7xl flex min-h-[64px] min-w-0 items-center justify-between gap-2 sm:min-h-[64px] md:min-h-[72px] rounded-2xl border border-white/[0.12] bg-zinc-950/45 px-3 py-2 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl backdrop-saturate-150 sm:px-4 sm:py-2 md:rounded-[1.35rem] md:px-6 md:py-2.5'
+          ? 'staggered-menu-header staggered-menu-header--in-glass pointer-events-auto mx-auto max-w-7xl flex min-h-[64px] min-w-0 items-center justify-between gap-2 sm:min-h-[64px] md:min-h-[72px] rounded-2xl border border-white/[0.16] bg-black/60 px-3 py-2 shadow-[0_8px_32px_rgba(0,0,0,0.42),inset_0_1px_0_rgba(255,255,255,0.07)] backdrop-blur-xl backdrop-saturate-150 sm:px-4 sm:py-2 md:rounded-[1.35rem] md:px-6 md:py-2.5'
           : 'staggered-menu-header'
       }
       aria-label="Навигация"

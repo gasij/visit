@@ -2,10 +2,10 @@ import React from 'react';
 import SectionPath from './SectionPath';
 
 const introPanelClass =
-  'rounded-2xl border border-white/10 bg-zinc-950/25 px-4 py-3 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]';
+  'rounded-2xl border border-white/[0.14] bg-black/50 px-4 py-3 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]';
 
 const TECH_CHIP_CLASS =
-  'font-mono text-[11px] sm:text-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 text-zinc-200 bg-zinc-950/35 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-md transition-all duration-200 hover:border-white/15 hover:bg-zinc-900/45 hover:text-white group-hover:border-white/15 group-hover:bg-zinc-900/45 group-hover:text-white';
+  'font-mono text-[11px] sm:text-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/[0.14] text-zinc-200 bg-black/45 shadow-[inset_0_1px_0_rgba(255,255,255,0.055)] backdrop-blur-md transition-all duration-200 hover:border-white/20 hover:bg-black/60 hover:text-white group-hover:border-white/20 group-hover:bg-black/60 group-hover:text-white';
 
 const stackGroups = [
   {
@@ -74,7 +74,7 @@ const Experience: React.FC = () => {
         {stackGroups.map((group, i) => (
           <div
             key={i}
-            className="group grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 md:gap-4 items-start p-4 sm:p-6 md:p-8 border-b border-zinc-900 hover:bg-zinc-900/50 transition-all rounded-xl sm:rounded-lg"
+            className="group grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 md:gap-4 items-start p-4 sm:p-6 md:p-8 border-b border-white/[0.08] hover:bg-black/35 transition-all rounded-xl sm:rounded-lg"
           >
             <div className="md:col-span-4 space-y-1">
               <div className="text-xl sm:text-2xl font-bold tracking-tight">{group.title}</div>

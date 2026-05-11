@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
 };
 
 const SocialIcon = ({ icon, label }: { icon: React.ReactNode, label: string }) => (
-  <button type="button" className="flex items-center justify-center gap-2 sm:gap-3 bg-zinc-900/50 border border-zinc-800 hover:border-zinc-600 px-4 py-3 sm:px-6 sm:py-4 rounded-full text-[10px] sm:text-xs font-bold transition-all text-zinc-500 hover:text-white w-full sm:w-auto min-w-0">
+  <button type="button" className="flex items-center justify-center gap-2 sm:gap-3 bg-black/50 border border-white/[0.14] hover:border-white/25 hover:bg-black/65 px-4 py-3 sm:px-6 sm:py-4 rounded-full text-[10px] sm:text-xs font-bold transition-all text-zinc-400 hover:text-white w-full sm:w-auto min-w-0 backdrop-blur-md">
     {icon}
     <span>{label}</span>
   </button>

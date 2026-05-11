@@ -4,17 +4,17 @@ import { Github, ArrowUpRight } from 'lucide-react';
 import SectionPath from './SectionPath';
 
 const techTagClass =
-  'font-mono text-[11px] sm:text-xs px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 text-zinc-200 bg-white/[0.035] shadow-[inset_0_1px_0_rgba(255,255,255,0.045)] backdrop-blur-sm transition-all duration-200 hover:border-white/15 hover:bg-white/[0.06] hover:text-white';
+  'font-mono text-[11px] sm:text-xs px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/[0.14] text-zinc-200 bg-black/45 shadow-[inset_0_1px_0_rgba(255,255,255,0.055)] backdrop-blur-md transition-all duration-200 hover:border-white/20 hover:bg-black/60 hover:text-white';
 
 /** Стеклянная панель под описание проекта (как в шапке / тегах) */
 const projectCopyGlass =
-  'max-w-md rounded-2xl sm:rounded-3xl border border-white/[0.10] bg-white/[0.035] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm px-5 py-5 sm:px-7 sm:py-6';
+  'max-w-md rounded-2xl sm:rounded-3xl border border-white/[0.14] bg-black/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md px-5 py-5 sm:px-7 sm:py-6';
 
 const projectShellClass =
-  'relative overflow-hidden rounded-[2rem] sm:rounded-[2.75rem] border border-white/[0.12] px-4 py-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_18px_56px_rgba(0,0,0,0.22)] backdrop-blur-md sm:px-7 sm:py-8 md:px-9 md:py-10';
+  'relative overflow-hidden rounded-[2rem] sm:rounded-[2.75rem] border border-white/[0.16] px-4 py-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.07),0_18px_56px_rgba(0,0,0,0.3)] backdrop-blur-xl sm:px-7 sm:py-8 md:px-9 md:py-10';
 
 const projectBadgeClass =
-  'relative z-10 mb-7 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/25 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-300 backdrop-blur-md';
+  'relative z-10 mb-7 inline-flex items-center gap-2 rounded-full border border-white/[0.14] bg-black/55 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-300 backdrop-blur-md';
 
 const openMoreProjects = () => {
   window.history.pushState(null, '', '/projects');
@@ -28,7 +28,7 @@ const Projects: React.FC = () => {
       <SectionPath items={['проекты']} className="mb-6 sm:mb-8" />
       {/* Project: Gostat */}
       <article
-        className={`${projectShellClass} mb-8 bg-[radial-gradient(circle_at_15%_15%,rgba(59,130,246,0.22),transparent_34%),linear-gradient(135deg,rgba(15,23,42,0.78),rgba(8,8,12,0.62))] sm:mb-10 md:mb-12`}
+        className={`${projectShellClass} mb-8 bg-[radial-gradient(circle_at_15%_15%,rgba(59,130,246,0.14),transparent_34%),linear-gradient(135deg,rgba(5,8,15,0.92),rgba(3,3,7,0.82))] sm:mb-10 md:mb-12`}
       >
         <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-sky-200/40 to-transparent" />
         <div className="pointer-events-none absolute -right-24 top-16 h-56 w-56 rounded-full bg-sky-500/10 blur-3xl" />
@@ -80,7 +80,7 @@ const Projects: React.FC = () => {
 
       {/* Project: Kana Master */}
       <article
-        className={`${projectShellClass} mb-14 bg-[radial-gradient(circle_at_82%_18%,rgba(236,72,153,0.18),transparent_32%),linear-gradient(135deg,rgba(23,12,20,0.72),rgba(8,8,12,0.66))] sm:mb-22 md:mb-28`}
+        className={`${projectShellClass} mb-14 bg-[radial-gradient(circle_at_82%_18%,rgba(236,72,153,0.12),transparent_32%),linear-gradient(135deg,rgba(15,6,12,0.92),rgba(3,3,7,0.84))] sm:mb-22 md:mb-28`}
       >
         <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-fuchsia-200/35 to-transparent" />
         <div className="pointer-events-none absolute -left-24 bottom-10 h-56 w-56 rounded-full bg-fuchsia-500/10 blur-3xl" />

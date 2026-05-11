@@ -57,7 +57,7 @@ const MoreProjectsPage: React.FC = () => {
         <button
           type="button"
           onClick={goHome}
-          className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-sm text-zinc-300 transition-colors hover:border-white/20 hover:bg-white/[0.06] hover:text-white"
+          className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/[0.14] bg-black/50 px-4 py-2 text-sm text-zinc-300 transition-colors hover:border-white/25 hover:bg-black/65 hover:text-white backdrop-blur-md"
         >
           <ArrowLeft size={16} />
           На главную
@@ -78,18 +78,18 @@ const MoreProjectsPage: React.FC = () => {
           {otherProjects.map((project) => (
             <article
               key={project.title}
-              className="group relative min-h-[360px] overflow-hidden rounded-[2rem] border border-white/[0.12] bg-zinc-950/45 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_18px_56px_rgba(0,0,0,0.22)] backdrop-blur-md transition-colors hover:border-white/20 sm:p-8"
+              className="group relative min-h-[360px] overflow-hidden rounded-[2rem] border border-white/[0.16] bg-black/60 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.07),0_18px_56px_rgba(0,0,0,0.32)] backdrop-blur-xl transition-colors hover:border-white/25 sm:p-8"
             >
               <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${project.accent}`} />
               <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-white/5 blur-3xl transition-opacity group-hover:opacity-80" />
 
               <div className="relative z-10 flex h-full min-h-[300px] flex-col">
                 <div className="mb-8 flex flex-wrap items-center gap-3 text-xs text-zinc-400">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/20 px-3 py-1.5">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.14] bg-black/50 px-3 py-1.5 backdrop-blur-md">
                     <Layers3 size={14} />
                     {project.type}
                   </span>
-                  <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/20 px-3 py-1.5">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.14] bg-black/50 px-3 py-1.5 backdrop-blur-md">
                     <CalendarDays size={14} />
                     {project.year}
                   </span>
@@ -102,7 +102,7 @@ const MoreProjectsPage: React.FC = () => {
                   {project.stack.map((item) => (
                     <span
                       key={item}
-                      className="rounded-full border border-white/10 bg-white/[0.035] px-3 py-1.5 font-mono text-[11px] text-zinc-300"
+                      className="rounded-full border border-white/[0.14] bg-black/45 px-3 py-1.5 font-mono text-[11px] text-zinc-300 backdrop-blur-md"
                     >
                       {item}
                     </span>

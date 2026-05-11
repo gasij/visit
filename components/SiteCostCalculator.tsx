@@ -20,7 +20,7 @@ import {
 } from '@/lib/siteCostCalculator';
 
 const panelGlass =
-  'rounded-2xl sm:rounded-3xl border border-white/[0.10] bg-white/[0.035] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm';
+  'rounded-2xl sm:rounded-3xl border border-white/[0.14] bg-black/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md';
 
 const labelClass = 'block text-xs font-mono uppercase tracking-widest text-zinc-500 mb-3';
 
@@ -81,7 +81,7 @@ const SiteCostCalculator: React.FC = () => {
       <div className="mb-10 space-y-4 sm:mb-14">
         <Reveal>
           <div className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-violet-200">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.14] bg-black/50 text-violet-200 backdrop-blur-md">
               <Calculator size={20} aria-hidden />
             </span>
             <SectionPath items={['стоимость']} />
@@ -146,7 +146,7 @@ const SiteCostCalculator: React.FC = () => {
                     className={`${chipBase} ${
                       kind === o.id
                         ? 'border-violet-500/50 bg-violet-500/15 text-white'
-                        : 'border-white/10 bg-black/20 text-zinc-400 hover:border-white/20 hover:text-zinc-200'
+                        : 'border-white/[0.14] bg-black/45 text-zinc-400 hover:border-white/25 hover:bg-black/60 hover:text-zinc-200'
                     }`}
                   >
                     <span className="block font-semibold">{o.title}</span>
@@ -188,7 +188,7 @@ const SiteCostCalculator: React.FC = () => {
                     className={`${chipBase} sm:min-w-[140px] ${
                       design === d.id
                         ? 'border-violet-500/50 bg-violet-500/15 text-white'
-                        : 'border-white/10 bg-black/20 text-zinc-400 hover:border-white/20 hover:text-zinc-200'
+                        : 'border-white/[0.14] bg-black/45 text-zinc-400 hover:border-white/25 hover:bg-black/60 hover:text-zinc-200'
                     }`}
                   >
                     {d.label}
@@ -211,7 +211,7 @@ const SiteCostCalculator: React.FC = () => {
                     className={`${chipBase} ${
                       motion === m.id
                         ? 'border-violet-500/50 bg-violet-500/15 text-white'
-                        : 'border-white/10 bg-black/20 text-zinc-400 hover:border-white/20 hover:text-zinc-200'
+                        : 'border-white/[0.14] bg-black/45 text-zinc-400 hover:border-white/25 hover:bg-black/60 hover:text-zinc-200'
                     }`}
                   >
                     {m.label}
@@ -234,7 +234,7 @@ const SiteCostCalculator: React.FC = () => {
                     className={`${chipBase} flex-1 ${
                       speed === s.id
                         ? 'border-violet-500/50 bg-violet-500/15 text-white'
-                        : 'border-white/10 bg-black/20 text-zinc-400 hover:border-white/20 hover:text-zinc-200'
+                        : 'border-white/[0.14] bg-black/45 text-zinc-400 hover:border-white/25 hover:bg-black/60 hover:text-zinc-200'
                     }`}
                   >
                     {s.label}
@@ -256,7 +256,7 @@ const SiteCostCalculator: React.FC = () => {
                 ].map((row) => (
                   <label
                     key={row.id}
-                    className="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-black/20 px-4 py-3 transition hover:border-white/20"
+                    className="flex cursor-pointer items-start gap-3 rounded-xl border border-white/[0.14] bg-black/45 px-4 py-3 transition hover:border-white/25 hover:bg-black/60"
                   >
                     <input
                       type="checkbox"

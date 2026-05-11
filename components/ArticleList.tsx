@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ArrowRight, ArrowDown, X } from 'lucide-react';
 import SectionPath from './SectionPath';
+import ShapeBlur from './ShapeBlur';
 
 type Article = {
   id: number;
@@ -291,7 +292,7 @@ const ArticleList: React.FC = () => {
   const currentArticles = ALL_ARTICLES.slice(startIndex, startIndex + itemsPerPage);
 
   return (
-    <section id="articles" className="py-10 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full min-w-0 overflow-x-hidden">
+    <section id="articles" className="py-10 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full min-w-0 overflow-visible">
       <ArticleModal article={openArticle} onClose={closeModal} />
       <SectionPath items={['статьи']} className="mb-5 sm:mb-7" />
 
@@ -301,24 +302,35 @@ const ArticleList: React.FC = () => {
         </h2>
       </div>
 
-      <div className="w-full min-w-0">
+      <div className="-mx-10 w-auto min-w-0 overflow-visible px-10 sm:-mx-14 sm:px-14 md:-mx-16 md:px-16">
         <div
-          className={`grid md:grid-cols-2 gap-4 sm:gap-8 transition-all duration-500 ease-in-out transform w-full min-w-0 ${
+          className={`grid md:grid-cols-2 gap-4 sm:gap-8 transition-all duration-500 ease-in-out transform w-full min-w-0 overflow-visible ${
             isAnimating ? 'opacity-0 translate-y-8 blur-sm' : 'opacity-100 translate-y-0 blur-0'
           }`}
         >
           {currentArticles.map((article) => (
             <div
               key={article.id}
-              className="bg-zinc-900/50 border border-zinc-800 p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-[3.5rem] hover:bg-zinc-800/80 transition-all group sm:hover:scale-[1.02] min-w-0"
+              className="relative isolate overflow-visible bg-black/55 border border-white/[0.1] p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-[3.5rem] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md hover:bg-black/70 transition-all group sm:hover:scale-[1.02] min-w-0"
             >
-              <h4 className="text-lg sm:text-2xl md:text-3xl font-bold font-mono mb-4 sm:mb-6 leading-tight group-hover:text-white transition-colors">
+              <div className="shape-blur-cloud pointer-events-none absolute -inset-12 z-0 opacity-30 blur-2xl mix-blend-screen transition-opacity duration-300 group-hover:opacity-65 sm:-inset-16">
+                <ShapeBlur
+                  className="absolute inset-0"
+                  variation={0}
+                  shapeSize={2.18}
+                  roundness={0.55}
+                  borderSize={0.22}
+                  circleSize={0.46}
+                  circleEdge={0.9}
+                />
+              </div>
+              <h4 className="relative z-10 text-lg sm:text-2xl md:text-3xl font-bold font-mono mb-4 sm:mb-6 leading-tight group-hover:text-white transition-colors">
                 {article.title}
               </h4>
-              <p className="text-zinc-500 text-xs sm:text-sm leading-relaxed mb-6 sm:mb-10 max-w-prose min-h-[3rem] overflow-hidden line-clamp-4 sm:line-clamp-3">
+              <p className="relative z-10 text-zinc-500 text-xs sm:text-sm leading-relaxed mb-6 sm:mb-10 max-w-prose min-h-[3rem] overflow-hidden line-clamp-4 sm:line-clamp-3">
                 {article.description}
               </p>
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+              <div className="relative z-10 flex flex-wrap items-center gap-3 sm:gap-4">
                 <button
                   type="button"
                   onClick={() => setOpenArticle(article)}

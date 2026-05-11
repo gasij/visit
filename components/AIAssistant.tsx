@@ -138,7 +138,7 @@ const AIAssistant: React.FC = () => {
             role="dialog"
             aria-modal="true"
             aria-labelledby="ai-assistant-title"
-            className={`pointer-events-auto flex max-h-[min(72vh,560px)] w-full min-h-0 origin-bottom-right flex-col overflow-hidden rounded-2xl border border-white/15 bg-zinc-950/92 shadow-2xl shadow-violet-950/20 backdrop-blur-xl md:rounded-2xl ${panelTransition} ${
+            className={`pointer-events-auto flex max-h-[min(72vh,560px)] w-full min-h-0 origin-bottom-right flex-col overflow-hidden rounded-2xl border border-white/[0.16] bg-black/85 shadow-2xl shadow-violet-950/20 backdrop-blur-xl md:rounded-2xl ${panelTransition} ${
               entered
                 ? 'translate-x-0 translate-y-0 scale-100 opacity-100 shadow-[0_24px_80px_-12px_rgba(0,0,0,0.55),0_0_0_1px_rgba(255,255,255,0.06),0_0_40px_-8px_rgba(139,92,246,0.18)]'
                 : 'translate-x-3 translate-y-7 scale-[0.9] opacity-0 shadow-[0_8px_24px_-8px_rgba(0,0,0,0.25)] md:translate-x-2 md:translate-y-6'
@@ -178,7 +178,7 @@ const AIAssistant: React.FC = () => {
               }`}
               style={reduceMotion ? undefined : { transitionDelay: entered ? '100ms' : '0ms' }}
             >
-              <div className="rounded-xl border border-dashed border-zinc-700/80 bg-zinc-900/50 px-4 py-8 text-center">
+              <div className="rounded-xl border border-dashed border-white/[0.14] bg-black/50 px-4 py-8 text-center">
                 <p className="text-sm leading-relaxed text-zinc-400">
                   Здесь будет чат с ассистентом: ответы о студии, услугах и проектах. Подключите backend или виджет
                   (OpenAI, локальная модель и т.д.).
@@ -193,7 +193,7 @@ const AIAssistant: React.FC = () => {
               }`}
               style={reduceMotion ? undefined : { transitionDelay: entered ? '140ms' : '0ms' }}
             >
-              <div className="flex gap-2 rounded-xl border border-white/10 bg-black/40 p-1.5 focus-within:border-violet-500/40">
+              <div className="flex gap-2 rounded-xl border border-white/[0.14] bg-black/60 p-1.5 focus-within:border-violet-500/40">
                 <label htmlFor="ai-assistant-input" className="sr-only">
                   Сообщение ассистенту
                 </label>
@@ -222,7 +222,7 @@ const AIAssistant: React.FC = () => {
         <button
           type="button"
           onClick={toggleFab}
-          className={`pointer-events-auto ml-auto flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-zinc-950/85 text-white shadow-lg backdrop-blur-xl transition-[transform,box-shadow,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-violet-400/50 hover:bg-zinc-900 hover:shadow-violet-500/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60 md:h-[3.75rem] md:w-[3.75rem] ${
+          className={`pointer-events-auto ml-auto flex h-14 w-14 items-center justify-center rounded-full border border-white/20 bg-black/75 text-white shadow-lg backdrop-blur-xl transition-[transform,box-shadow,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-violet-400/50 hover:bg-black/90 hover:shadow-violet-500/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500/60 md:h-[3.75rem] md:w-[3.75rem] ${
             open ? 'scale-95' : 'scale-100 hover:scale-105 active:scale-95'
           }`}
           aria-expanded={open}

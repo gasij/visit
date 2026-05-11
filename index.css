@@ -62,6 +62,23 @@ body {
   font-family: 'JetBrains Mono', 'JetBrainsMono', monospace;
 }
 
+.shape-blur-card-border {
+  padding: 8px;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+.shape-blur-cloud {
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 42%, rgba(0, 0, 0, 0.7) 62%, transparent 82%);
+  mask-image: radial-gradient(ellipse at center, #000 42%, rgba(0, 0, 0, 0.7) 62%, transparent 82%);
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;

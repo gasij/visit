@@ -4,7 +4,16 @@ import Reveal from './Reveal';
 import TextPressure from './TextPressure';
 
 const heroIntroPanelClass =
-  'rounded-2xl border border-white/10 bg-zinc-950/25 px-4 py-3 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]';
+  'rounded-2xl border border-white/[0.14] bg-black/50 px-4 py-3 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]';
+
+const mobileHeroTitleClass =
+  'sm:hidden text-[clamp(4rem,22vw,6.8rem)] font-black uppercase leading-[0.82] tracking-normal text-white';
+
+const mobileHeroSubtitleClass =
+  'sm:hidden text-[clamp(2.45rem,13.5vw,4.25rem)] font-black uppercase leading-[0.86] tracking-normal text-white';
+
+const mobileHeroLongSubtitleClass =
+  'sm:hidden text-[clamp(2rem,10.4vw,3.85rem)] font-black uppercase leading-[0.9] tracking-normal text-white';
 
 const Hero: React.FC = () => {
   const [narrow, setNarrow] = useState(true);
@@ -28,7 +37,8 @@ const Hero: React.FC = () => {
       <div className="relative min-w-0 w-full">
         <Reveal defaultVisible width="100%">
           <div className="mx-auto mb-6 sm:mb-8 flex w-full max-w-[1500px] flex-col gap-1 sm:gap-2 min-w-0">
-            <div style={{ position: 'relative', height: hMain }} className="w-full min-w-0 overflow-visible">
+            <div className={mobileHeroTitleClass}>AQUM</div>
+            <div style={{ position: 'relative', height: hMain }} className="hidden w-full min-w-0 overflow-visible sm:block">
               <TextPressure
                 text="AQUM"
                 flex
@@ -48,9 +58,13 @@ const Hero: React.FC = () => {
             </div>
             {/* Подзаголовки отдельно на всю ширину — не делим ряд с кнопкой, без наезда */}
             <div className="flex flex-col gap-6 sm:gap-7 md:gap-8 w-full min-w-0">
+              <div className="sm:hidden space-y-2">
+                <div className={mobileHeroSubtitleClass}>Студия</div>
+                <div className={mobileHeroLongSubtitleClass}>веб-разработки</div>
+              </div>
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 md:gap-8 lg:gap-14 w-full min-w-0">
                 <div
-                  className="relative w-full md:w-[42%] md:max-w-xl min-w-0 overflow-visible"
+                  className="relative hidden w-full min-w-0 overflow-visible sm:block md:w-[42%] md:max-w-xl"
                   style={{ height: hSub }}
                 >
                   <TextPressure
@@ -73,7 +87,7 @@ const Hero: React.FC = () => {
                   />
                 </div>
                 <div
-                  className="relative w-full md:flex-1 md:min-w-0 overflow-visible"
+                  className="relative hidden w-full min-w-0 overflow-visible sm:block md:flex-1 md:min-w-0"
                   style={{ height: hSub }}
                 >
                   <TextPressure
@@ -148,7 +162,7 @@ const Hero: React.FC = () => {
 const SocialButton = ({ icon, label }: { icon: React.ReactNode; label: string }) => (
   <button
     type="button"
-    className="flex items-center gap-2 bg-zinc-900/50 border border-zinc-800 hover:border-zinc-400 px-4 py-2 sm:px-6 sm:py-2.5 rounded-full text-xs sm:text-sm transition-all text-zinc-300 hover:text-white hover:scale-105 active:scale-95"
+    className="flex items-center gap-2 bg-black/50 border border-white/[0.14] hover:border-white/30 px-4 py-2 sm:px-6 sm:py-2.5 rounded-full text-xs sm:text-sm transition-all text-zinc-300 hover:bg-black/65 hover:text-white hover:scale-105 active:scale-95 backdrop-blur-md"
   >
     {icon}
     <span className="truncate max-w-[28vw] sm:max-w-none">{label}</span>

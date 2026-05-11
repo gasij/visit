@@ -14,7 +14,7 @@ const CONTACT_MAIL_TO = 'hello@aqum.com';
 
 /** Как у блоков описания в Projects: стеклянная панель */
 const introGlass =
-  'max-w-md rounded-2xl sm:rounded-3xl border border-white/[0.10] bg-white/[0.035] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm px-5 py-5 sm:px-7 sm:py-6';
+  'max-w-md rounded-2xl sm:rounded-3xl border border-white/[0.14] bg-black/50 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md px-5 py-5 sm:px-7 sm:py-6';
 
 type Field = 'name' | 'email' | 'message';
 
@@ -72,7 +72,7 @@ const ContactForm: React.FC = () => {
   };
 
   const inputClass =
-    'w-full rounded-xl border border-zinc-800 bg-zinc-950/60 px-4 py-3 text-sm text-white placeholder:text-zinc-600 outline-none transition-colors focus:border-zinc-500';
+    'w-full rounded-xl border border-white/[0.12] bg-black/55 px-4 py-3 text-sm text-white placeholder:text-zinc-600 outline-none transition-colors focus:border-zinc-500';
 
   return (
     <section
@@ -108,7 +108,7 @@ const ContactForm: React.FC = () => {
         <Reveal delay={0.2} width="100%">
           <form
             onSubmit={handleSubmit}
-            className="rounded-2xl sm:rounded-[2rem] border border-zinc-800 bg-zinc-950/40 p-6 sm:p-8 md:p-10 space-y-5 backdrop-blur-sm"
+            className="rounded-2xl sm:rounded-[2rem] border border-white/[0.14] bg-black/55 p-6 sm:p-8 md:p-10 space-y-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md"
             noValidate
           >
             <div className="space-y-2">
@@ -184,7 +184,7 @@ const ContactForm: React.FC = () => {
                 )}
               </button>
               {status === 'sent' && (
-                <p className="rounded-lg border border-zinc-800/80 bg-zinc-950/90 px-3 py-2 text-xs font-mono text-zinc-200 backdrop-blur-sm sm:ml-2">
+                <p className="rounded-lg border border-white/[0.14] bg-black/70 px-3 py-2 text-xs font-mono text-zinc-200 backdrop-blur-md sm:ml-2">
                   Если почта не открылась, напишите на {CONTACT_MAIL_TO}
                 </p>
               )}
