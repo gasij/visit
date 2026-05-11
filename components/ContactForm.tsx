@@ -14,7 +14,7 @@ const CONTACT_MAIL_TO = 'hello@aqum.com';
 
 /** Как у блоков описания в Projects: стеклянная панель */
 const introGlass =
-  'max-w-md rounded-2xl sm:rounded-3xl border border-white/[0.12] bg-zinc-950/45 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl backdrop-saturate-150 px-5 py-5 sm:px-7 sm:py-6';
+  'max-w-md rounded-2xl sm:rounded-3xl border border-white/[0.10] bg-white/[0.035] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm px-5 py-5 sm:px-7 sm:py-6';
 
 type Field = 'name' | 'email' | 'message';
 

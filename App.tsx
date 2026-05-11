@@ -14,11 +14,29 @@ import Footer from './components/Footer';
 import LoadingScreen from './components/LoadingScreen';
 import ColorBends from './components/ColorBends';
 import AIAssistant from './components/AIAssistant';
+import MoreProjectsPage from './components/MoreProjectsPage';
+
+const getRoute = () => (window.location.pathname === '/projects' ? 'projects' : 'home');
 
 const App: React.FC = () => {
-  const [introVisible, setIntroVisible] = useState(true);
-  const [mainEntered, setMainEntered] = useState(false);
+  const [route, setRoute] = useState<'home' | 'projects'>(getRoute);
+  const [introVisible, setIntroVisible] = useState(() => getRoute() === 'home');
+  const [mainEntered, setMainEntered] = useState(() => getRoute() !== 'home');
   const [liteBg, setLiteBg] = useState(false);
+
+  useEffect(() => {
+    const syncRoute = () => {
+      const nextRoute = getRoute();
+      setRoute(nextRoute);
+      if (nextRoute !== 'home') {
+        setIntroVisible(false);
+        setMainEntered(true);
+      }
+    };
+
+    window.addEventListener('popstate', syncRoute);
+    return () => window.removeEventListener('popstate', syncRoute);
+  }, []);
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -32,8 +50,11 @@ const App: React.FC = () => {
     <>
       {introVisible && (
         <LoadingScreen
-          onExitStart={() => setMainEntered(true)}
-          onFinished={() => setIntroVisible(false)}
+          onExitStart={() => undefined}
+          onFinished={() => {
+            setIntroVisible(false);
+            window.requestAnimationFrame(() => setMainEntered(true));
+          }}
         />
       )}
       {/* Вне overflow-x-hidden: иначе на iOS fixed-фон «едет» вместе со скроллом предка */}
@@ -43,7 +64,7 @@ const App: React.FC = () => {
         }`}
         aria-hidden
       >
-        {liteBg ? (
+        {!mainEntered ? null : liteBg ? (
           <div
             className="absolute inset-0 bg-[#060010]"
             style={{
@@ -70,37 +91,43 @@ const App: React.FC = () => {
       </div>
 
       <div
-        className={`relative z-10 min-h-screen text-white selection:bg-white selection:text-black overflow-x-hidden transition-[opacity,transform,filter] delay-[140ms] duration-[520ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-          mainEntered ? 'translate-y-0 scale-100 opacity-100 blur-0' : 'translate-y-3 scale-[0.994] opacity-0 blur-[2px]'
+        className={`relative z-10 min-h-screen text-white selection:bg-white selection:text-black overflow-x-hidden transition-[opacity,transform] delay-[140ms] duration-[520ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          mainEntered ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-3 scale-[0.994] opacity-0'
         }`}
       >
         <div className="relative w-full min-w-0 overflow-x-hidden">
-          <Header />
-          <main className="w-full min-w-0 overflow-x-hidden">
-            <Hero />
-            <Projects />
-            <Experience />
+          {route === 'projects' ? (
+            <MoreProjectsPage />
+          ) : (
+            <>
+              <Header />
+              <main className="w-full min-w-0 overflow-x-hidden">
+                <Hero />
+                <Projects />
+                <Experience />
 
-            <ArticleList />
-            <MagicBento
-                textAutoHide
-                enableStars={false}
-                enableSpotlight={false}
-                enableBorderGlow
-                enableTilt={false}
-                enableMagnetism={false}
-                clickEffect={false}
-                spotlightRadius={280}
-                particleCount={0}
-                glowColor="132, 0, 255"
-                disableAnimations={false}
-              />
-            <StudioLeaders />
-            <SiteCostCalculator />
-            <ContactForm />
-          </main>
-          <Footer />
-          <AIAssistant />
+                <ArticleList />
+                <MagicBento
+                    textAutoHide
+                    enableStars={false}
+                    enableSpotlight={false}
+                    enableBorderGlow
+                    enableTilt={false}
+                    enableMagnetism={false}
+                    clickEffect={false}
+                    spotlightRadius={280}
+                    particleCount={0}
+                    glowColor="132, 0, 255"
+                    disableAnimations={false}
+                  />
+                <StudioLeaders />
+                <SiteCostCalculator />
+                <ContactForm />
+              </main>
+              <Footer />
+              <AIAssistant />
+            </>
+          )}
         </div>
       </div>
     </>

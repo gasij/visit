@@ -2,12 +2,12 @@ import React from 'react';
 import StaggeredMenu from './StaggeredMenu';
 
 const navLinks = [
-  { href: '#team', label: 'Команда' },
-  { href: '#magicbento', label: 'Способности' },
-  { href: '#projects', label: 'Проекты' },
-  { href: '#articles', label: 'Статьи' },
-  { href: '#calculator', label: 'Стоимость' },
-  { href: '#contact', label: 'Контакты' },
+  { href: '/#team', label: 'Команда' },
+  { href: '/#magicbento', label: 'Способности' },
+  { href: '/#projects', label: 'Проекты' },
+  { href: '/#articles', label: 'Статьи' },
+  { href: '/#calculator', label: 'Стоимость' },
+  { href: '/#contact', label: 'Контакты' },
 ];
 
 const staggeredMenuItems = navLinks.map(({ href, label }) => ({
@@ -35,7 +35,7 @@ const Header: React.FC = () => {
       openMenuButtonColor="#ffffff"
       changeMenuColorOnOpen
       colors={['#1a1224', '#2a1f3d', '#3d2d5c', '#5227FF']}
-      logoHref="#"
+      logoHref="/"
       accentColor="#5227FF"
       socialSectionTitle="Соцсети"
       toggleLabels={{ open: 'Меню', close: 'Закрыть' }}

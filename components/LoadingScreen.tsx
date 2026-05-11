@@ -18,7 +18,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFinished, onExitStart }
     setExit(true);
     onExitStart();
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    window.setTimeout(onFinished, 760);
+    window.setTimeout(onFinished, 620);
   }, [onExitStart, onFinished]);
 
   useEffect(() => {
@@ -71,19 +71,21 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onFinished, onExitStart }
       }`}
       aria-label="Вход на сайт AQUM"
     >
-      <div className="absolute inset-0 opacity-80">
-        <Prism
-          animationType="rotate"
-          timeScale={0.5}
-          height={3.5}
-          baseWidth={5.5}
-          scale={3.6}
-          hueShift={0}
-          colorFrequency={1}
-          noise={0}
-          glow={1}
-        />
-      </div>
+      {!exit && (
+        <div className="aqum-prism-layer absolute inset-0 opacity-80">
+          <Prism
+            animationType="rotate"
+            timeScale={0.5}
+            height={3.5}
+            baseWidth={5.5}
+            scale={3.6}
+            hueShift={0}
+            colorFrequency={1}
+            noise={0}
+            glow={1}
+          />
+        </div>
+      )}
       <div className="absolute inset-0 bg-black/35" aria-hidden />
       <div
         className={`aqum-intro-word relative z-10 flex justify-center px-4 sm:px-6 ${

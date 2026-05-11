@@ -10,26 +10,6 @@ type Article = {
   content: string;
 };
 
-const ARTICLE_PAGE_STACK_TAGS = [
-  '.NET',
-  'Node.js',
-  'React',
-  'Next.js',
-  'Directus',
-  'Docker',
-  'PostgreSQL',
-  '1С',
-  'PHP',
-] as const;
-
-const ARTICLE_FOCUS_TAGS = ['сайт', 'кабинет', 'CRM', 'AI', 'аналитика'] as const;
-
-const techChipClass =
-  'font-mono text-[11px] sm:text-xs px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 text-zinc-200 bg-zinc-950/35 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-md transition-all duration-200 hover:border-white/15 hover:bg-zinc-900/45 hover:text-white';
-
-const articleIntroPanelClass =
-  'rounded-2xl border border-white/10 bg-zinc-950/25 px-4 py-3 backdrop-blur-md shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] space-y-3';
-
 const ALL_ARTICLES: Article[] = [
   {
     id: 1,
@@ -315,26 +295,8 @@ const ArticleList: React.FC = () => {
       <ArticleModal article={openArticle} onClose={closeModal} />
       <SectionPath items={['статьи']} className="mb-5 sm:mb-7" />
 
-      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-5 sm:mb-7 overflow-hidden">
-        <div className={`max-w-xl order-2 sm:order-1 ${articleIntroPanelClass}`}>
-          <div className="flex flex-wrap items-center gap-x-1.5 gap-y-2">
-            <span className="font-mono text-zinc-400 text-xs sm:text-sm shrink-0">Стек:</span>
-            {ARTICLE_PAGE_STACK_TAGS.map((tag) => (
-              <span key={tag} className={techChipClass}>
-                {tag}
-              </span>
-            ))}
-          </div>
-          <div className="flex flex-wrap items-center gap-x-1.5 gap-y-2">
-            <span className="font-mono text-zinc-400 text-xs sm:text-sm shrink-0">Фокус —</span>
-            {ARTICLE_FOCUS_TAGS.map((tag) => (
-              <span key={tag} className={techChipClass}>
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-        <h2 className="text-4xl sm:text-6xl md:text-9xl font-black opacity-100 tracking-tighter md:translate-x-12 animate-[fadeIn_0.8s_ease-out] leading-none order-1 sm:order-2 shrink-0">
+      <div className="mb-5 flex justify-end overflow-hidden sm:mb-7">
+        <h2 className="shrink-0 animate-[fadeIn_0.8s_ease-out] text-4xl font-black leading-none tracking-tighter opacity-100 sm:text-6xl md:translate-x-12 md:text-9xl">
           Статьи
         </h2>
       </div>

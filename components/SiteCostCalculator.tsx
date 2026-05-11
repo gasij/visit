@@ -20,7 +20,7 @@ import {
 } from '@/lib/siteCostCalculator';
 
 const panelGlass =
-  'rounded-2xl sm:rounded-3xl border border-white/[0.12] bg-zinc-950/45 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_8px_40px_rgba(0,0,0,0.4)] backdrop-blur-xl backdrop-saturate-150';
+  'rounded-2xl sm:rounded-3xl border border-white/[0.10] bg-white/[0.035] shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] backdrop-blur-sm';
 
 const labelClass = 'block text-xs font-mono uppercase tracking-widest text-zinc-500 mb-3';
 
