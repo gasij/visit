@@ -1,4 +1,7 @@
 
+/* Next.js: this component uses window/document and React hooks */
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -16,17 +19,30 @@ import ColorBends from './components/ColorBends';
 import AIAssistant from './components/AIAssistant';
 import MoreProjectsPage from './components/MoreProjectsPage';
 
-const getRoute = () => (window.location.pathname === '/projects' ? 'projects' : 'home');
+type Route = 'home' | 'projects';
 
-const App: React.FC = () => {
-  const [route, setRoute] = useState<'home' | 'projects'>(getRoute);
-  const [introVisible, setIntroVisible] = useState(() => getRoute() === 'home');
-  const [mainEntered, setMainEntered] = useState(() => getRoute() !== 'home');
+const getRouteFromWindow = (): Route => {
+  if (typeof window === 'undefined') return 'home';
+  return window.location.pathname === '/projects' ? 'projects' : 'home';
+};
+
+type AppProps = {
+  /**
+   * Позволяет page-компоненту Next.js подсказать начальный маршрут,
+   * чтобы избежать SSR/гидратационных рассинхронов.
+   */
+  initialRoute?: Route;
+};
+
+const App: React.FC<AppProps> = ({ initialRoute }) => {
+  const [route, setRoute] = useState<Route>(() => initialRoute ?? getRouteFromWindow());
+  const [introVisible, setIntroVisible] = useState(() => (initialRoute ?? getRouteFromWindow()) === 'home');
+  const [mainEntered, setMainEntered] = useState(() => (initialRoute ?? getRouteFromWindow()) !== 'home');
   const [liteBg, setLiteBg] = useState(false);
 
   useEffect(() => {
     const syncRoute = () => {
-      const nextRoute = getRoute();
+      const nextRoute = getRouteFromWindow();
       setRoute(nextRoute);
       if (nextRoute !== 'home') {
         setIntroVisible(false);

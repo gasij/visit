@@ -257,7 +257,8 @@ export default function ColorBends({
     };
     renderer.domElement.addEventListener('webglcontextlost', onCtxLost, false);
 
-    if ('ResizeObserver' in window) {
+    const hasResizeObserver = typeof ResizeObserver !== 'undefined';
+    if (hasResizeObserver) {
       const ro = new ResizeObserver(() => scheduleResize());
       ro.observe(container);
       resizeObserverRef.current = ro;

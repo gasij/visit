@@ -98,7 +98,9 @@ class AsciiFilter {
     this.charset = options.charset ?? " .'`^\",:;Il!i~+_-?][}{1)(|/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
     this.mouse = { x: 0, y: 0 };
 
-    this.context.webkitImageSmoothingEnabled = false;
+    // CanvasRenderingContext2D имеет не-стандартные свойства для некоторых браузеров.
+    // В TypeScript они не объявлены, поэтому делаем безопасный каст.
+    (this.context as unknown as { webkitImageSmoothingEnabled?: boolean }).webkitImageSmoothingEnabled = false;
     (this.context as unknown as { mozImageSmoothingEnabled: boolean }).mozImageSmoothingEnabled = false;
     (this.context as unknown as { msImageSmoothingEnabled: boolean }).msImageSmoothingEnabled = false;
     this.context.imageSmoothingEnabled = false;

@@ -68,12 +68,7 @@ const StudioLeaders: React.FC = () => {
         </h2>
       </Reveal>
 
-      <div
-        className="grid gap-8 md:gap-6 xl:gap-8 items-start justify-items-stretch w-full"
-        style={{
-          gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 360px), 1fr))',
-        }}
-      >
+      <div className="grid grid-cols-2 gap-8 md:gap-6 xl:gap-8 items-start justify-items-stretch w-full">
         {leaders.map((L, i) => (
           <Reveal key={L.handle} delay={0.05 + i * 0.05} width="100%" defaultVisible>
             <div className="w-full flex justify-center min-h-[min(460px,78svh)] py-1 box-border">

@@ -192,8 +192,8 @@ const ProfileCardComponent = ({
       if (!shell || !tiltEngine) return;
       shell.classList.add('active');
       shell.classList.add('entering');
-      if (enterTimerRef.current) window.clearTimeout(enterTimerRef.current);
-      enterTimerRef.current = window.setTimeout(() => {
+      if (enterTimerRef.current) clearTimeout(enterTimerRef.current);
+      enterTimerRef.current = setTimeout(() => {
         shell.classList.remove('entering');
       }, ANIMATION_CONFIG.ENTER_TRANSITION_MS);
       const { x, y } = getOffsets(event, shell);
@@ -287,7 +287,7 @@ const ProfileCardComponent = ({
       shell.removeEventListener('pointerleave', pointerLeaveHandler);
       shell.removeEventListener('click', handleClick);
       window.removeEventListener('deviceorientation', deviceOrientationHandler);
-      if (enterTimerRef.current) window.clearTimeout(enterTimerRef.current);
+      if (enterTimerRef.current) clearTimeout(enterTimerRef.current);
       if (leaveRafRef.current) cancelAnimationFrame(leaveRafRef.current);
       tiltEngine.cancel();
       shell.classList.remove('entering');
